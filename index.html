@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Identity Risk Intelligence</title>
+  <meta name="description" content="Experiencia interactiva — Parte 1: el problema.">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/hud.css">
+  <link rel="stylesheet" href="css/scenes.css">
+</head>
+<body>
+  <!-- Capas ambientales -->
+  <canvas id="bg" aria-hidden="true"></canvas>
+  <div class="grid-overlay" aria-hidden="true"></div>
+  <div class="cursor-light" aria-hidden="true"></div>
+
+  <!-- HUD -->
+  <header class="hud-top">
+    <div class="hud-brand">
+      <svg class="hud-mark" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/>
+      </svg>
+      <span>Investigación digital</span>
+      <span class="hud-sep">/</span>
+      <span class="hud-live"><i></i><span data-clock>--:--:--</span></span>
+    </div>
+    <div class="hud-scene">
+      <span class="hud-code" data-hud-code>01</span>
+      <span class="hud-total">/ 08</span>
+      <span class="hud-name" data-hud-name>Activación</span>
+    </div>
+  </header>
+  <nav class="rail" aria-label="Escenas"></nav>
+  <button class="hint" type="button" aria-label="Continuar">
+    <span class="hint__mouse"><i></i></span>
+    <span class="hint__text" data-hint>Desplaza para continuar</span>
+  </button>
+  <div class="progress" aria-hidden="true"><i></i></div>
+
+  <main id="stage">
+
+    <!-- ESCENA 01 — ACTIVACIÓN -->
+    <section class="scene scene--activation" data-id="activation">
+      <canvas class="scene-canvas"></canvas>
+      <div class="boot">
+        <div class="boot__core">
+          <svg viewBox="0 0 120 120" aria-hidden="true">
+            <circle class="ring-base" cx="60" cy="60" r="46"/>
+            <circle class="ring-progress" cx="60" cy="60" r="46"/>
+            <g class="ring-ticks"></g>
+            <circle class="ring-inner" cx="60" cy="60" r="30"/>
+            <circle class="ring-dot" cx="60" cy="60" r="2.5"/>
+          </svg>
+        </div>
+        <h1 class="boot__title"><span class="l1"></span><span class="l2"></span></h1>
+        <div class="boot__status">
+          <span class="dot"></span>
+          <span class="boot__status-text">SYSTEM INITIALIZING</span>
+          <span class="boot__pct">00</span>
+        </div>
+        <div class="boot__slot">
+          <ul class="boot__log"></ul>
+          <button class="cta" type="button">
+            <i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i>
+            <span class="cta__label">Iniciar experiencia</span>
+            <span class="cta__sheen"></span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ESCENA 02 — UNA IDENTIDAD -->
+    <section class="scene scene--identity" data-id="identity">
+      <div class="scene__head">
+        <p class="kicker"><b>02</b> Una identidad</p>
+        <div class="swap statement">
+          <p class="swap__a"></p>
+          <p class="swap__b"></p>
+        </div>
+      </div>
+      <div class="orbit px" style="--d:-10"></div>
+      <div class="readout readout--br">
+        <span>Señales asociadas</span>
+        <strong data-count>00</strong>
+      </div>
+    </section>
+
+    <!-- ESCENA 03 — EL CAOS -->
+    <section class="scene scene--chaos" data-id="chaos">
+      <canvas class="scene-canvas"></canvas>
+      <ol class="ticker" aria-hidden="true"></ol>
+      <div class="scene__head">
+        <p class="kicker"><b>03</b> El caos</p>
+      </div>
+      <div class="readout readout--tr">
+        <div><span>Señales</span><strong data-count>0</strong></div>
+        <div><span>Fuentes</span><strong>06</strong></div>
+        <div><span>Contexto</span><strong class="is-void">—</strong></div>
+      </div>
+      <div class="phrases">
+        <p class="phrase phrase--1"></p>
+        <p class="phrase phrase--2"></p>
+        <i class="phrase__sweep"></i>
+      </div>
+    </section>
+
+    <!-- ESCENA 04 — PIEZAS SEPARADAS -->
+    <section class="scene scene--silos" data-id="silos">
+      <canvas class="scene-canvas"></canvas>
+      <div class="scene__head">
+        <p class="kicker"><b>04</b> Las piezas están separadas</p>
+        <p class="statement"></p>
+      </div>
+      <div class="islands"></div>
+      <aside class="card" aria-live="polite"></aside>
+    </section>
+
+    <!-- ESCENA 05 — EL ANALISTA -->
+    <section class="scene scene--analyst" data-id="analyst">
+      <svg class="threads" aria-hidden="true"></svg>
+      <div class="scene__head">
+        <p class="kicker"><b>05</b> El analista</p>
+        <div class="swap statement statement--narrow">
+          <p class="swap__a"></p>
+          <p class="swap__b"></p>
+        </div>
+      </div>
+      <div class="windows"></div>
+      <div class="analyst">
+        <svg class="analyst__fig" viewBox="0 0 200 170" aria-hidden="true">
+          <circle class="halo h1" cx="100" cy="58" r="44"/>
+          <circle class="halo h2" cx="100" cy="58" r="62"/>
+          <circle class="head" cx="100" cy="58" r="20"/>
+          <path class="body" d="M42 166 C48 118 74 98 100 98 C126 98 152 118 158 166"/>
+          <path class="desk" d="M12 168 H188"/>
+        </svg>
+        <span class="analyst__q">?</span>
+      </div>
+      <div class="trail"></div>
+      <div class="meters"></div>
+    </section>
+
+    <!-- ESCENA 06 — LA PREGUNTA -->
+    <section class="scene scene--question" data-id="question">
+      <div class="question">
+        <i class="question__cursor"></i>
+        <p class="q q1"></p>
+        <p class="q q2"></p>
+      </div>
+    </section>
+
+    <!-- ESCENA 07 — EL CAMBIO -->
+    <section class="scene scene--shift" data-id="shift">
+      <canvas class="scene-canvas"></canvas>
+      <div class="scene__head">
+        <p class="kicker"><b>07</b> El cambio</p>
+      </div>
+      <div class="caption swap">
+        <p class="swap__a"></p>
+        <p class="swap__b"></p>
+      </div>
+      <div class="sources"></div>
+      <ol class="chain"></ol>
+      <div class="nucleus">
+        <div class="nucleus__ring r1"></div>
+        <div class="nucleus__ring r2"></div>
+        <svg class="nucleus__risk" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="48" pathLength="1"/></svg>
+        <div class="nucleus__label">Identidad</div>
+      </div>
+      <div class="equation">
+        <span class="eq-term">Identidad</span>
+        <span class="eq-op">+</span>
+        <span class="eq-term eq-term--ctx">Contexto</span>
+        <span class="eq-line"></span>
+        <span class="eq-result">Riesgo</span>
+      </div>
+    </section>
+
+    <!-- ESCENA 08 — REVELACIÓN -->
+    <section class="scene scene--reveal" data-id="reveal">
+      <div class="reveal px" style="--d:8">
+        <svg class="emblem" viewBox="0 0 120 120" aria-hidden="true">
+          <circle class="e-outer" cx="60" cy="60" r="56"/>
+          <circle class="e-ring" cx="60" cy="60" r="40" pathLength="1"/>
+          <g class="e-spokes">
+            <line x1="31.7" y1="31.7" x2="52.9" y2="52.9" pathLength="1"/>
+            <line x1="88.3" y1="31.7" x2="67.1" y2="52.9" pathLength="1"/>
+            <line x1="31.7" y1="88.3" x2="52.9" y2="67.1" pathLength="1"/>
+            <line x1="88.3" y1="88.3" x2="67.1" y2="67.1" pathLength="1"/>
+          </g>
+          <g class="e-nodes">
+            <circle cx="31.7" cy="31.7" r="2.6"/><circle cx="88.3" cy="31.7" r="2.6"/>
+            <circle cx="31.7" cy="88.3" r="2.6"/><circle cx="88.3" cy="88.3" r="2.6"/>
+          </g>
+          <circle class="e-core" cx="60" cy="60" r="10"/>
+          <circle class="e-dot" cx="60" cy="60" r="3"/>
+        </svg>
+        <h2 class="reveal__title"><span class="t1"></span><span class="t2"></span></h2>
+        <i class="reveal__rule"></i>
+        <p class="reveal__sub"></p>
+      </div>
+      <footer class="reveal__foot">
+        <span data-org></span>
+        <span class="reveal__next" data-next></span>
+      </footer>
+    </section>
+
+  </main>
+
+  <!-- Datos → utilidades → capas → escenas → controlador -->
+  <script src="js/data.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/background.js"></script>
+  <script src="js/scenes/01-activation.js"></script>
+  <script src="js/scenes/02-identity.js"></script>
+  <script src="js/scenes/03-chaos.js"></script>
+  <script src="js/scenes/04-silos.js"></script>
+  <script src="js/scenes/05-analyst.js"></script>
+  <script src="js/scenes/06-question.js"></script>
+  <script src="js/scenes/07-shift.js"></script>
+  <script src="js/scenes/08-reveal.js"></script>
+  <script src="js/controller.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

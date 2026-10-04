@@ -1,0 +1,134 @@
+/* ==========================================================================
+   HUD — barra superior, rail de escenas, indicación de scroll y progreso
+   ========================================================================== */
+.hud-top {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px clamp(16px, 3.2vw, 52px);
+  font: 400 10.5px/1 var(--mono);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--muted);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 1.2s var(--ease) 0.8s, transform 1.2s var(--ease) 0.8s;
+}
+body.is-started .hud-top { opacity: 1; transform: none; }
+
+.hud-brand, .hud-scene { display: flex; align-items: center; gap: 12px; }
+.hud-mark { width: 16px; height: 16px; fill: none; stroke: var(--ink-2); stroke-width: 1.2; }
+.hud-sep { color: var(--dim); }
+.hud-live { display: inline-flex; align-items: center; gap: 8px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.hud-live i {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 8px rgba(var(--cyan-rgb), 0.8);
+  animation: hud-blink 2.4s ease-in-out infinite;
+}
+.hud-code { color: var(--ink); }
+.hud-total { color: var(--dim); }
+.hud-name { min-width: 15ch; color: var(--ink-2); }
+@keyframes hud-blink { 50% { opacity: 0.25; } }
+
+/* ---------- Rail ---------- */
+.rail {
+  position: fixed;
+  right: clamp(12px, 2.2vw, 36px);
+  top: 50%;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity 1.2s var(--ease) 1s;
+}
+body.is-started .rail { opacity: 1; }
+.rail button {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  height: 20px;
+  cursor: pointer;
+  color: var(--dim);
+  font: 400 9.5px/1 var(--mono);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.rail .tick { width: 12px; height: 1px; background: currentColor; transition: width 0.6s var(--ease), background 0.6s; }
+.rail .num { opacity: 0; transition: opacity 0.4s; }
+.rail button { position: relative; }
+.rail .lbl { position: absolute; right: calc(100% + 10px); pointer-events: none; opacity: 0; transform: translateX(8px); transition: opacity 0.4s, transform 0.5s var(--ease); white-space: nowrap; color: var(--ink-2); }
+.rail:hover .num { opacity: 1; }
+.rail button:hover .lbl { opacity: 1; transform: none; }
+.rail button:hover .tick { width: 22px; background: var(--ink-2); }
+.rail button.is-past { color: var(--muted); }
+.rail button.is-active { color: var(--ink); }
+.rail button.is-active .tick { width: 34px; background: var(--cyan); box-shadow: 0 0 10px rgba(var(--cyan-rgb), 0.6); }
+.rail button.is-active .num { opacity: 1; }
+
+/* ---------- Indicación de scroll ---------- */
+.hint {
+  position: fixed;
+  left: 50%;
+  bottom: 26px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transform: translateX(-50%);
+  cursor: pointer;
+  font: 400 10px/1 var(--mono);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--muted);
+  opacity: 0;
+  transition: opacity 1s var(--ease) 1.4s, color 0.3s;
+}
+body.is-started .hint { opacity: 1; }
+body.is-last .hint .hint__mouse { opacity: 0; }
+.hint:hover { color: var(--ink); }
+.hint__mouse {
+  position: relative;
+  width: 16px; height: 24px;
+  border: 1px solid currentColor;
+  border-radius: 9px;
+  opacity: 0.8;
+  transition: opacity 0.5s;
+}
+.hint__mouse i {
+  position: absolute;
+  left: 50%; top: 5px;
+  width: 1px; height: 5px;
+  margin-left: -0.5px;
+  background: currentColor;
+  animation: hint-scroll 2s var(--ease) infinite;
+}
+@keyframes hint-scroll {
+  0% { transform: translateY(0); opacity: 0; }
+  30% { opacity: 1; }
+  100% { transform: translateY(8px); opacity: 0; }
+}
+
+/* ---------- Progreso global ---------- */
+.progress { position: fixed; left: 0; right: 0; bottom: 0; height: 1px; z-index: 10; background: rgba(150, 180, 230, 0.06); }
+.progress i {
+  position: absolute;
+  inset: 0;
+  transform-origin: left;
+  transform: scaleX(0);
+  background: linear-gradient(90deg, transparent, rgba(var(--cyan-rgb), 0.7));
+  transition: transform 1.2s var(--ease);
+}
+
+@media (max-width: 720px) {
+  .hud-brand > span:not(.hud-live), .hud-sep { display: none; }
+  .rail { display: none; }
+  .hint__text { display: none; }
+}
