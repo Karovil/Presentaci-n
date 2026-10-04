@@ -25,8 +25,8 @@ IRI.data = {
   /* ---------- 01 · ACTIVACIÓN ---------- */
   boot: {
     title: ['IDENTITY RISK', 'INTELLIGENCE'],
-    initializing: 'SYSTEM INITIALIZING',
-    ready: 'SYSTEM READY',
+    initializing: 'INICIALIZANDO SISTEMA',
+    ready: 'SISTEMA LISTO',
     cta: 'Iniciar experiencia',
     log: [
       { label: 'Despertando sensores',     state: 'OK' },
@@ -57,8 +57,8 @@ IRI.data = {
 
   /* ---------- 03 · EL CAOS ---------- */
   chaos: {
-    labels: ['LOGIN', 'DEVICE', 'APPLICATION', 'ACCESS', 'SESSION', 'LOCATION', 'LOGIN', 'DEVICE', 'ACCESS', 'APPLICATION'],
-    alertLabel: 'ALERT',
+    labels: ['INICIO DE SESIÓN', 'DISPOSITIVO', 'APLICACIÓN', 'ACCESO', 'SESIÓN', 'UBICACIÓN', 'INICIO DE SESIÓN', 'DISPOSITIVO', 'ACCESO', 'APLICACIÓN'],
+    alertLabel: 'ALERTA',
     alertRatio: 0.1,
     /* Población visual a lo largo del tiempo (segundos → partículas). */
     ramp: [[0, 0], [0.6, 5], [2.4, 5], [3.2, 20], [4.8, 20], [5.6, 50], [7, 50], [10.5, 460]],
@@ -115,7 +115,7 @@ IRI.data = {
       { key: 'device',   title: 'Dispositivos',    meta: '3',     x: 39, y: 22, kind: 'rows' },
       { key: 'app',      title: 'Aplicaciones',    meta: '27',    x: 63, y: 22, kind: 'rows' },
       { key: 'alert',    title: 'Alertas',         meta: '6',     x: 84, y: 44, kind: 'rows', alert: true },
-      { key: 'timeline', title: 'Timeline',        meta: '72 h',  x: 21, y: 76, kind: 'timeline' },
+      { key: 'timeline', title: 'Línea de tiempo',        meta: '72 h',  x: 21, y: 76, kind: 'timeline' },
       { key: 'incident', title: 'Incidentes',      meta: '1',     x: 79, y: 76, kind: 'rows' },
     ],
     /* Cada verbo enfoca una ventana y suma esfuerzo a los medidores. */

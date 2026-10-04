@@ -1,7 +1,7 @@
 /* ==========================================================================
    ESCENA 18 — DE 3 DÍAS A 5 MINUTOS
    La barra de 72 horas de trabajo manual se comprime hasta una línea.
-   03 DAYS → 05 MIN.
+   03 DÍAS → 05 MIN.
    ========================================================================== */
 (() => {
   const U = IRI.utils;

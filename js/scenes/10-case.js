@@ -26,12 +26,12 @@
     el.querySelector('.statement').textContent = D.question;
 
     el.querySelector('.casefile').innerHTML = `
-      <p class="casefile__id"><span>Case</span> #${IRI.data.caseId}</p>
+      <p class="casefile__id"><span>Caso</span> #${IRI.data.caseId}</p>
       <p class="casefile__title">${D.title}</p>
       <dl>
-        <div><dt>Status</dt><dd class="is-open">${D.status}</dd></div>
-        <div><dt>Owner</dt><dd>${D.owner}</dd></div>
-        <div><dt>Opened</dt><dd>${D.opened}</dd></div>
+        <div><dt>Estado</dt><dd class="is-open">${D.status}</dd></div>
+        <div><dt>Responsable</dt><dd>${D.owner}</dd></div>
+        <div><dt>Apertura</dt><dd>${D.opened}</dd></div>
       </dl>`;
 
     const ang = angles(D.evidence.length);

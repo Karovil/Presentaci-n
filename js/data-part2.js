@@ -1,7 +1,7 @@
 /* ==========================================================================
    DATOS — SEGUNDA PARTE
    De la alerta a la decisión: investigación manual, automatización, IA,
-   Identity Risk Score y visión de futuro.
+   puntaje de riesgo de identidad y visión de futuro.
    Se añaden a IRI.data sin modificar la primera parte.
    ========================================================================== */
 IRI.data.scenes.push(
@@ -12,7 +12,7 @@ IRI.data.scenes.push(
   { id: 'ask',        code: '13', name: 'Otra pregunta',         mood: 0.06 },
   { id: 'automation', code: '14', name: 'Automatización',        mood: 0.45 },
   { id: 'ai',         code: '15', name: 'La capa de IA',         mood: 0.4, hint: 'Pasa el cursor sobre cada referencia' },
-  { id: 'score',      code: '16', name: 'Identity Risk Score',   mood: 0.35 },
+  { id: 'score',      code: '16', name: 'Puntaje de riesgo',     mood: 0.35 },
   { id: 'decide',     code: '17', name: 'El analista decide',    mood: 0.4 },
   { id: 'compress',   code: '18', name: '3 días → 5 minutos',    mood: 0.2 },
   { id: 'future',     code: '19', name: 'El futuro',             mood: 0.6, hint: 'Fin de la segunda parte' },
@@ -25,28 +25,28 @@ Object.assign(IRI.data, {
 
   /* ---------- 09 · LA ALERTA ---------- */
   alert: {
-    states: ['NORMAL', 'INVESTIGATION REQUIRED', 'RISK DETECTED'],
+    states: ['NORMAL', 'INVESTIGACIÓN REQUERIDA', 'RIESGO DETECTADO'],
     stateLabel: 'Estado',
-    detected: 'Risk signal detected',
-    created: 'Case created',
+    detected: 'Señal de riesgo detectada',
+    created: 'Caso creado',
     lines: ['Algo pasó.', 'Ahora tenemos que investigar.'],
   },
 
   /* ---------- 10 · SE ABRE LA INVESTIGACIÓN ---------- */
   case: {
-    title: 'Identity under investigation',
-    status: 'Open',
+    title: 'Identidad en investigación',
+    status: 'Abierto',
     owner: 'Analista SOC · Nivel 2',
     opened: 'Abierto hace 2 min',
     question: '¿Qué ocurrió?',
     evidence: [
-      { icon: 'lock',     label: 'Authentication' },
-      { icon: 'device',   label: 'Device' },
-      { icon: 'app',      label: 'Application' },
-      { icon: 'globe',    label: 'Access' },
-      { icon: 'alert',    label: 'Alert', alert: true },
-      { icon: 'activity', label: 'Activity' },
-      { icon: 'clock',    label: 'Timeline' },
+      { icon: 'lock',     label: 'Autenticación' },
+      { icon: 'device',   label: 'Dispositivo' },
+      { icon: 'app',      label: 'Aplicación' },
+      { icon: 'globe',    label: 'Acceso' },
+      { icon: 'alert',    label: 'Alerta', alert: true },
+      { icon: 'activity', label: 'Actividad' },
+      { icon: 'clock',    label: 'Línea de tiempo' },
     ],
   },
 
@@ -56,16 +56,16 @@ Object.assign(IRI.data, {
   manual: {
     statement: 'Cada respuesta abre otra búsqueda.',
     actions: [
-      { verb: 'Search',   text: 'Buscar una autenticación',      kind: 'search',  hours: 2.5, chip: '02:14 · inicio de sesión', at: 0.40, lane: 0 },
-      { verb: 'Review',   text: 'Revisar el dispositivo',        kind: 'device',  hours: 3,   chip: 'Equipo nunca visto',       at: 0.47, lane: 1 },
-      { verb: 'Review',   text: 'Consultar la aplicación',       kind: 'apps',    hours: 2.5, chip: 'Aplicación poco habitual', at: 0.57, lane: 0 },
-      { verb: 'Search',   text: 'Buscar actividad histórica',    kind: 'history', hours: 4,   chip: 'Fuera de su patrón',       at: 0.13, lane: 0 },
-      { verb: 'Compare',  text: 'Comparar horarios',             kind: 'compare', hours: 3.5, chip: '6 min de diferencia',      at: 0.65, lane: 1 },
-      { verb: 'Filter',   text: 'Revisar alertas relacionadas',  kind: 'alerts',  hours: 4,   chip: 'Alerta en el mismo equipo', at: 0.76, lane: 0, alert: true },
-      { verb: 'Relate',   text: 'Relacionar eventos',            kind: 'relate',  hours: 5,   chip: null },
-      { verb: 'Document', text: 'Construir la línea de tiempo',  kind: 'order',   hours: 6,   chip: null },
-      { verb: 'Validate', text: 'Validar la evidencia',          kind: 'validate',hours: 5.5, chip: null },
-      { verb: 'Decide',   text: 'Interpretar',                   kind: 'interpret', hours: 4, chip: null },
+      { verb: 'Buscar',   text: 'Buscar una autenticación',      kind: 'search',  hours: 2.5, chip: '02:14 · inicio de sesión', at: 0.40, lane: 0 },
+      { verb: 'Revisar',  text: 'Revisar el dispositivo',        kind: 'device',  hours: 3,   chip: 'Equipo nunca visto',       at: 0.47, lane: 1 },
+      { verb: 'Consultar', text: 'Consultar la aplicación',       kind: 'apps',    hours: 2.5, chip: 'Aplicación poco habitual', at: 0.57, lane: 0 },
+      { verb: 'Buscar',   text: 'Buscar actividad histórica',    kind: 'history', hours: 4,   chip: 'Fuera de su patrón',       at: 0.13, lane: 0 },
+      { verb: 'Comparar',  text: 'Comparar horarios',             kind: 'compare', hours: 3.5, chip: '6 min de diferencia',      at: 0.65, lane: 1 },
+      { verb: 'Filtrar',  text: 'Revisar alertas relacionadas',  kind: 'alerts',  hours: 4,   chip: 'Alerta en el mismo equipo', at: 0.76, lane: 0, alert: true },
+      { verb: 'Relacionar',  text: 'Relacionar eventos',            kind: 'relate',  hours: 5,   chip: null },
+      { verb: 'Documentar', text: 'Construir la línea de tiempo',  kind: 'order',   hours: 6,   chip: null },
+      { verb: 'Validar', text: 'Validar la evidencia',          kind: 'validate',hours: 5.5, chip: null },
+      { verb: 'Decidir',  text: 'Interpretar',                   kind: 'interpret', hours: 4, chip: null },
     ],
     stepMs: 1900,
     readout: { elapsed: 'Tiempo', queries: 'Consultas', sources: 'Fuentes' },
@@ -74,22 +74,22 @@ Object.assign(IRI.data, {
 
   /* ---------- 12 · EL TIEMPO ---------- */
   time: {
-    days: ['DAY 01', 'DAY 02', 'DAY 03'],
+    days: ['DÍA 01', 'DÍA 02', 'DÍA 03'],
     dayNotes: [
       'Búsquedas, consultas, primeras hipótesis.',
       'Más ventanas. Más evidencia. Más validaciones.',
       'La historia todavía se está reconstruyendo.',
     ],
-    total: '03 DAYS',
+    total: '03 DÍAS',
     lines: [
-      'Much of the time is spent reconstructing the context.',
+      'Gran parte del tiempo se va en reconstruir el contexto.',
       'No es lentitud. Es información fragmentada.',
     ],
   },
 
   /* ---------- 13 · LA PREGUNTA ---------- */
   ask: {
-    total: '03 DAYS',
+    total: '03 DÍAS',
     questions: [
       '¿Y si no tuviéramos que hacer todo esto manualmente?',
       '¿Qué parte de la investigación puede hacer una máquina?',
@@ -99,9 +99,9 @@ Object.assign(IRI.data, {
   /* ---------- 14 · AUTOMATIZACIÓN ---------- */
   automation: {
     kicker: 'Automatización',
-    statement: 'Automation does the work.',
-    trigger: 'Automation triggered',
-    ready: 'Context ready',
+    statement: 'La automatización hace el trabajo.',
+    trigger: 'Automatización activada',
+    ready: 'Contexto listo',
     stages: [
       { label: 'Recopila',   sub: 'todas las fuentes, en paralelo' },
       { label: 'Organiza',   sub: 'mismo formato, sin duplicados' },
@@ -115,7 +115,7 @@ Object.assign(IRI.data, {
 
   /* ---------- 15 · LA CAPA DE IA ---------- */
   ai: {
-    statement: 'AI helps understand it.',
+    statement: 'La IA ayuda a entenderlo.',
     question: '¿Por qué esta identidad requiere atención?',
     /* La respuesta cita evidencia: [n] enlaza con evidence[n-1] */
     answer: [
@@ -136,7 +136,7 @@ Object.assign(IRI.data, {
 
   /* ---------- 16 · IDENTITY RISK SCORE ---------- */
   score: {
-    title: 'Identity Risk Score',
+    title: 'Puntaje de riesgo de identidad',
     max: 100,
     /* El puntaje se construye factor a factor: cada uno suma o resta. */
     base: 12,
@@ -155,12 +155,12 @@ Object.assign(IRI.data, {
 
   /* ---------- 17 · EL ANALISTA DECIDE ---------- */
   decide: {
-    lines: ['Automation does the work.', 'AI helps understand it.', 'The analyst decides.'],
+    lines: ['La automatización hace el trabajo.', 'La IA ayuda a entenderlo.', 'El analista decide.'],
     layers: ['Automatización', 'Inteligencia artificial', 'Analista'],
     summary: [
       { k: 'Caso', v: '#IR-2047' },
       { k: 'Evidencia', v: '5 hechos · 4 fuentes' },
-      { k: 'Score', v: '58 · Medio' },
+      { k: 'Puntaje', v: '58 · Medio' },
     ],
     options: ['Escalar', 'Contener', 'Monitorear', 'Cerrar'],
     optionsLabel: 'Decisión del analista',
@@ -168,7 +168,7 @@ Object.assign(IRI.data, {
 
   /* ---------- 18 · DE 3 DÍAS A 5 MINUTOS ---------- */
   compress: {
-    from: { value: '03', unit: 'DAYS' },
+    from: { value: '03', unit: 'DÍAS' },
     to: { value: '05', unit: 'MIN' },
     fromLabel: 'Investigación manual',
     toLabel: 'Investigación automatizada y contextualizada',
@@ -180,12 +180,12 @@ Object.assign(IRI.data, {
   future: {
     today: 'Hoy',
     tomorrow: 'Mañana',
-    todayTitle: 'Human identity',
-    tomorrowTitle: 'Human + non-human identities',
+    todayTitle: 'Identidad humana',
+    tomorrowTitle: 'Identidades humanas y no humanas',
     rings: [
       { label: 'Hoy',        items: [{ icon: 'user', label: 'Usuario' }, { icon: 'key', label: 'Cuenta privilegiada' }] },
-      { label: 'Evolución',  items: [{ icon: 'gear', label: 'Cuenta de servicio' }, { icon: 'app', label: 'Service principal' }] },
-      { label: 'Futuro',     items: [{ icon: 'flow', label: 'Workflow automatizado' }, { icon: 'agent', label: 'Agente de IA' }] },
+      { label: 'Evolución',  items: [{ icon: 'gear', label: 'Cuenta de servicio' }, { icon: 'app', label: 'Principal de servicio' }] },
+      { label: 'Futuro',     items: [{ icon: 'flow', label: 'Flujo automatizado' }, { icon: 'agent', label: 'Agente de IA' }] },
     ],
     line: 'Misma trazabilidad. Mismo contexto. Nuevos tipos de identidad.',
     end: 'Identity Risk Intelligence',

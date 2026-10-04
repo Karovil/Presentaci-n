@@ -923,7 +923,7 @@
 }
 .scene.is-active .ai-lens { opacity: 1; transform: none; }
 .ai-lens::before {
-  content: 'AI';
+  content: 'IA';
   position: absolute;
   top: -30px;
   left: 0;

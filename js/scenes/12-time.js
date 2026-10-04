@@ -1,7 +1,7 @@
 /* ==========================================================================
    ESCENA 12 — EL TIEMPO
-   DAY 01 → DAY 02 → DAY 03. Cada día deja más ventanas, más hilos y más
-   validaciones alrededor del reloj. Paso 2: 03 DAYS.
+   DÍA 01 → DÍA 02 → DÍA 03. Cada día deja más ventanas, más hilos y más
+   validaciones alrededor del reloj. Paso 2: 03 DÍAS.
    ========================================================================== */
 (() => {
   const U = IRI.utils;

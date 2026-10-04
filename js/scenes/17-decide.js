@@ -1,7 +1,7 @@
 /* ==========================================================================
    ESCENA 17 — EL ANALISTA DECIDE
    Tres capas, tres frases. Cada paso enciende una:
-   Automation does the work → AI helps understand it → The analyst decides.
+   La automatización hace el trabajo → La IA ayuda a entenderlo → El analista decide.
    Al final, las opciones de decisión quedan en manos del analista.
    ========================================================================== */
 (() => {

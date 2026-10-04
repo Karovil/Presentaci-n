@@ -1,6 +1,6 @@
 /* ==========================================================================
    ESCENA 13 — LA PREGUNTA
-   Solo queda "03 DAYS". Pausa. Luego, las dos preguntas que abren la solución.
+   Solo queda "03 DÍAS". Pausa. Luego, las dos preguntas que abren la solución.
    ========================================================================== */
 (() => {
   const U = IRI.utils;

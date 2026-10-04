@@ -25,7 +25,7 @@
     canvas = el.querySelector('canvas');
     el.querySelector('.statement').textContent = D.statement;
     trigger = el.querySelector('.trigger');
-    trigger.innerHTML = `<span class="trigger__dot"></span><span>Case #${IRI.data.caseId}</span><i></i><span class="trigger__on">${D.trigger}</span>`;
+    trigger.innerHTML = `<span class="trigger__dot"></span><span>Caso #${IRI.data.caseId}</span><i></i><span class="trigger__on">${D.trigger}</span>`;
 
     el.querySelector('.pipeline').innerHTML =
       D.sources.map((s, i) => `<span class="psrc" style="left:${SRC_X * 100}%;top:${srcY(i) * 100}%">${s}</span>`).join('') +

@@ -27,7 +27,7 @@
     el.querySelector('.swap__a').textContent = D.lines[0];
     el.querySelector('.swap__b').textContent = D.lines[1];
     el.querySelector('.detect__a').textContent = D.detected;
-    el.querySelector('.detect__case').innerHTML = `Case #${IRI.data.caseId} <em>${D.created}</em>`;
+    el.querySelector('.detect__case').innerHTML = `Caso #${IRI.data.caseId} <em>${D.created}</em>`;
     loop = new U.Loop(frame);
     U.onResize(() => { if (active) { resize(); build(); } });
   };
