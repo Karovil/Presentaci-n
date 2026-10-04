@@ -37,6 +37,7 @@ IRI.controller = (() => {
       mods[i] = IRI.scenes[s.id] || {};
       mods[i].init && mods[i].init(sections[i]);
     });
+    document.querySelector('[data-hud-total]').textContent = '/ ' + String(list.length).padStart(2, '0');
     buildRail();
     bindInput();
 
@@ -53,7 +54,7 @@ IRI.controller = (() => {
 
   function buildRail() {
     hud.rail.innerHTML = list.map((s, i) =>
-      `<button type="button" data-i="${i}" aria-label="${s.code} ${s.name}">
+      `<button type="button" data-i="${i}" class="${s.part ? 'is-part-start' : ''}" aria-label="${s.code} ${s.name}">
          <span class="lbl">${s.name}</span><span class="num">${s.code}</span><span class="tick"></span>
        </button>`).join('');
     hud.rail.addEventListener('click', (e) => {
@@ -103,7 +104,7 @@ IRI.controller = (() => {
 
   function next() {
     const m = mods[idx];
-    if (m.onNext && m.onNext()) return;
+    if (m.onNext && m.onNext()) { lock(600); return; }
     if (!started) return;
     if (step < (m.steps || 1) - 1) setStep(step + 1);
     else if (idx < list.length - 1) go(idx + 1);

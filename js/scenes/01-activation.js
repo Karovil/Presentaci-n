@@ -127,7 +127,7 @@
 
     // Onda de "sistema listo"
     if (wave !== null) {
-      const k = (now - wave) / 1000;
+      const k = Math.max(0, (now - wave) / 1000);
       if (k > 2.4) wave = null;
       else {
         const r = U.ease.outCubic(k / 2.4) * Math.hypot(W, H) * 0.55;

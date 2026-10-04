@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/hud.css">
   <link rel="stylesheet" href="css/scenes.css">
+  <link rel="stylesheet" href="css/part2.css">
 </head>
 <body>
   <!-- Capas ambientales -->
@@ -27,7 +28,7 @@
     </div>
     <div class="hud-scene">
       <span class="hud-code" data-hud-code>01</span>
-      <span class="hud-total">/ 08</span>
+      <span class="hud-total" data-hud-total>/ 19</span>
       <span class="hud-name" data-hud-name>Activación</span>
     </div>
   </header>
@@ -206,10 +207,192 @@
       </footer>
     </section>
 
+    <!-- ======================= SEGUNDA PARTE ======================= -->
+
+    <!-- ESCENA 09 — LA ALERTA -->
+    <section class="scene scene--alert" data-id="alert">
+      <canvas class="scene-canvas"></canvas>
+      <div class="scene__head">
+        <p class="kicker"><b>09</b> La alerta</p>
+        <div class="swap statement">
+          <p class="swap__a"></p>
+          <p class="swap__b"></p>
+        </div>
+      </div>
+      <div class="sentinel">
+        <div class="sentinel__core">
+          <i class="sentinel__ring r1"></i><i class="sentinel__ring r2"></i><i class="sentinel__ring r3"></i>
+          <div class="sentinel__body"></div>
+        </div>
+        <div class="sentinel__state">
+          <span class="sentinel__k"></span>
+          <span class="sentinel__v"></span>
+        </div>
+      </div>
+      <div class="detect">
+        <p class="detect__a"></p>
+        <p class="detect__b"><span class="detect__case"></span></p>
+      </div>
+    </section>
+
+    <!-- ESCENA 10 — SE ABRE LA INVESTIGACIÓN -->
+    <section class="scene scene--case" data-id="case">
+      <svg class="case-links" aria-hidden="true"></svg>
+      <div class="scene__head">
+        <p class="kicker"><b>10</b> Se abre la investigación</p>
+        <p class="statement statement--big"></p>
+      </div>
+      <aside class="casefile"></aside>
+      <div class="evidence-ring"></div>
+      <div class="analyst analyst--case">
+        <svg class="analyst__fig" viewBox="0 0 200 170" aria-hidden="true">
+          <circle class="halo h1" cx="100" cy="58" r="44"/>
+          <circle class="halo h2" cx="100" cy="58" r="62"/>
+          <circle class="head" cx="100" cy="58" r="20"/>
+          <path class="body" d="M42 166 C48 118 74 98 100 98 C126 98 152 118 158 166"/>
+          <path class="desk" d="M12 168 H188"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ESCENA 11 — LA INVESTIGACIÓN MANUAL -->
+    <section class="scene scene--manual" data-id="manual">
+      <div class="scene__head">
+        <p class="kicker"><b>11</b> La investigación manual</p>
+        <p class="statement"></p>
+      </div>
+      <div class="action">
+        <span class="action__verb"></span>
+        <p class="action__text"></p>
+        <div class="action__ticks"></div>
+      </div>
+      <div class="bench"><div class="bench__frame"></div></div>
+      <div class="readout readout--tr manual__readout"></div>
+      <div class="caseline">
+        <span class="caseline__label"></span>
+        <div class="caseline__track"><i class="caseline__axis"></i></div>
+      </div>
+    </section>
+
+    <!-- ESCENA 12 — EL TIEMPO -->
+    <section class="scene scene--time" data-id="time">
+      <div class="time__night"></div>
+      <div class="time__clutter"></div>
+      <div class="time__dial">
+        <svg viewBox="0 0 200 200" aria-hidden="true">
+          <circle class="dial-base" cx="100" cy="100" r="92"/>
+          <g class="dial-ticks"></g>
+          <circle class="dial-arc" cx="100" cy="100" r="92" pathLength="1"/>
+        </svg>
+        <div class="time__day"></div>
+        <p class="time__note"></p>
+      </div>
+      <div class="time__track"></div>
+      <div class="time__total">
+        <p class="time__big"></p>
+        <p class="time__line l1"></p>
+        <p class="time__line l2"></p>
+      </div>
+    </section>
+
+    <!-- ESCENA 13 — LA PREGUNTA -->
+    <section class="scene scene--ask" data-id="ask">
+      <div class="ask">
+        <p class="ask__total"></p>
+        <p class="ask__q q1"></p>
+        <p class="ask__q q2"></p>
+      </div>
+    </section>
+
+    <!-- ESCENA 14 — AUTOMATIZACIÓN -->
+    <section class="scene scene--automation" data-id="automation">
+      <canvas class="scene-canvas"></canvas>
+      <div class="scene__head">
+        <p class="kicker"><b>14</b> Automatización</p>
+        <p class="statement statement--en"></p>
+      </div>
+      <div class="trigger"></div>
+      <div class="pipeline"></div>
+      <div class="readout readout--tr auto__readout"></div>
+    </section>
+
+    <!-- ESCENA 15 — LA CAPA DE IA -->
+    <section class="scene scene--ai" data-id="ai">
+      <svg class="ai-links" aria-hidden="true"></svg>
+      <div class="scene__head">
+        <p class="kicker"><b>15</b> La capa de IA</p>
+        <p class="statement statement--en"></p>
+      </div>
+      <div class="ai-graph"></div>
+      <i class="ai-lens"></i>
+      <div class="ai-panel">
+        <p class="ai-panel__q"></p>
+        <p class="ai-panel__a"></p>
+        <p class="ai-panel__note"></p>
+      </div>
+      <p class="ai-principle"></p>
+    </section>
+
+    <!-- ESCENA 16 — IDENTITY RISK SCORE -->
+    <section class="scene scene--score" data-id="score">
+      <div class="scene__head">
+        <p class="kicker"><b>16</b> Identity Risk Score</p>
+      </div>
+      <div class="gauge">
+        <svg viewBox="0 0 200 200" aria-hidden="true">
+          <circle class="gauge__track" cx="100" cy="100" r="84" pathLength="100"/>
+          <g class="gauge__ticks"></g>
+          <circle class="gauge__value" cx="100" cy="100" r="84" pathLength="100"/>
+        </svg>
+        <div class="gauge__center">
+          <span class="gauge__title"></span>
+          <strong class="gauge__num">00</strong>
+          <span class="gauge__level"></span>
+        </div>
+      </div>
+      <ol class="factors"></ol>
+      <p class="score__note"></p>
+    </section>
+
+    <!-- ESCENA 17 — EL ANALISTA DECIDE -->
+    <section class="scene scene--decide" data-id="decide">
+      <div class="layers"></div>
+      <div class="manifesto"></div>
+      <div class="decision"></div>
+    </section>
+
+    <!-- ESCENA 18 — DE 3 DÍAS A 5 MINUTOS -->
+    <section class="scene scene--compress" data-id="compress">
+      <div class="compress">
+        <div class="compress__num">
+          <span class="compress__v"></span><span class="compress__u"></span>
+        </div>
+        <div class="compress__bar"><i class="bar-manual"></i><i class="bar-auto"></i></div>
+        <div class="compress__labels"><span class="lab-from"></span><span class="lab-to"></span></div>
+        <p class="compress__line"></p>
+        <p class="compress__note"></p>
+      </div>
+    </section>
+
+    <!-- ESCENA 19 — EL FUTURO -->
+    <section class="scene scene--future" data-id="future">
+      <canvas class="scene-canvas"></canvas>
+      <div class="future__head">
+        <div class="future__col fc-today"><span class="kicker-mini"></span><p></p></div>
+        <div class="future__col fc-tomorrow"><span class="kicker-mini"></span><p></p></div>
+      </div>
+      <div class="cosmos"></div>
+      <div class="future__foot">
+        <p class="future__line"></p>
+        <p class="future__end"></p>
+      </div>
+    </section>
+
   </main>
 
   <!-- Datos → utilidades → capas → escenas → controlador -->
   <script src="js/data.js"></script>
+  <script src="js/data-part2.js"></script>
   <script src="js/utils.js"></script>
   <script src="js/background.js"></script>
   <script src="js/scenes/01-activation.js"></script>
@@ -220,6 +403,17 @@
   <script src="js/scenes/06-question.js"></script>
   <script src="js/scenes/07-shift.js"></script>
   <script src="js/scenes/08-reveal.js"></script>
+  <script src="js/scenes/09-alert.js"></script>
+  <script src="js/scenes/10-case.js"></script>
+  <script src="js/scenes/11-manual.js"></script>
+  <script src="js/scenes/12-time.js"></script>
+  <script src="js/scenes/13-ask.js"></script>
+  <script src="js/scenes/14-automation.js"></script>
+  <script src="js/scenes/15-ai.js"></script>
+  <script src="js/scenes/16-score.js"></script>
+  <script src="js/scenes/17-decide.js"></script>
+  <script src="js/scenes/18-compress.js"></script>
+  <script src="js/scenes/19-future.js"></script>
   <script src="js/controller.js"></script>
   <script src="js/main.js"></script>
 </body>
