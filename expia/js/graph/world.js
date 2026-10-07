@@ -104,6 +104,7 @@ EX.world = (() => {
   }
   canvas.addEventListener('click', (e) => {
     const n = pick(e.clientX, e.clientY);
+    if (n && n.onClick) n.onClick(n, e);
     clickFns.forEach((f) => f(n, e));
   });
 
@@ -202,7 +203,7 @@ EX.world = (() => {
 
     // Nodos
     for (const n of nodes) {
-      if (n.alpha < 0.01) continue;
+      if (n.alpha < 0.01 || n.hidden) continue;
       const p = project(n.x, n.y);
       if (p.x < -40 || p.x > W + 40 || p.y < -40 || p.y > H + 40) continue;
       const r = nodeRadius(n);

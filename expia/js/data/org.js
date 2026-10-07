@@ -29,6 +29,14 @@ EX.org = {
     { key: 'db',       label: 'Bases de datos', count:  50, real:   64, x:  260, y:  430, sx: 190, sy: 120 },
     { key: 'networks', label: 'Redes',          count:  40, real:   52, x: -240, y:  470, sx: 260, sy:  90 },
   ],
+  /* Regiones que aparecen cuando la superficie "crece" (escena 06) */
+  extClusters: [
+    { key: 'identities', label: 'Identidades',        count: 150, real: 9420, x:  -80, y: -760, sx: 520, sy: 120, color: 'violet', ext: true },
+    { key: 'remote',     label: 'Endpoints remotos',  count: 110, real: 2310, x: -1500, y:  -20, sx: 170, sy: 330, ext: true },
+    { key: 'workloads',  label: 'Cargas cloud',       count:  90, real: 1145, x: 1560, y: -140, sx: 170, sy: 300, color: 'cyan', ext: true },
+    { key: 'external',   label: 'Servicios expuestos', count: 60, real:  318, x:  900, y:  860, sx: 380, sy: 110, ext: true },
+  ],
+
   /* Enlaces entre regiones (dependencias de alto nivel) */
   bridges: [
     ['users', 'devices'], ['devices', 'networks'], ['networks', 'servers'], ['servers', 'db'],

@@ -35,6 +35,18 @@ EX.u = (() => {
     sine: (t) => -(Math.cos(Math.PI * t) - 1) / 2,
   };
 
+  /* Interpola una tabla [[x, y], ...] */
+  function sampleRampSafe(table, x) {
+    if (x <= table[0][0]) return table[0][1];
+    for (let i = 1; i < table.length; i++) {
+      if (x <= table[i][0]) {
+        const [x0, y0] = table[i - 1], [x1, y1] = table[i];
+        return lerp(y0, y1, (x - x0) / (x1 - x0 || 1));
+      }
+    }
+    return table[table.length - 1][1];
+  }
+
   const rgba = (c, a) => `rgba(${c[0]},${c[1]},${c[2]},${a})`;
 
   /* Timeouts agrupados que una escena cancela al salir */
@@ -115,7 +127,7 @@ EX.u = (() => {
 
   const icon = (name) => `<svg class="ico" viewBox="0 0 24 24" aria-hidden="true">${EX.icons[name] || ''}</svg>`;
 
-  return { rand, pick, clamp, lerp, pad, fmt, gauss, seeded, ease, rgba, Timeline, Loop, countTo, resolve, pointer, onResize, icon };
+  return { sampleRampSafe, rand, pick, clamp, lerp, pad, fmt, gauss, seeded, ease, rgba, Timeline, Loop, countTo, resolve, pointer, onResize, icon };
 })();
 
 /* Iconos de trazo 24×24 */

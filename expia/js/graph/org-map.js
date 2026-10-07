@@ -9,6 +9,7 @@ EX.orgMap = (() => {
   const clusters = new Map();   // key → { def, nodes, hub }
   let terrain = 0, terrainTarget = 0, labelsTarget = 0, labels = 0;
   let focusCluster = null;
+  let extOn = 0, extTarget = 0;   // regiones ampliadas (escena 06 en adelante)
 
   function build() {
     if (built) return;
@@ -16,7 +17,8 @@ EX.orgMap = (() => {
     const rnd = U.seeded(2047);
     const g = () => (rnd() + rnd() + rnd() - 1.5) / 1.5;
 
-    D.clusters.forEach((c) => {
+    D.clusters.concat(D.extClusters || []).forEach((c) => {
+      const tag = c.ext ? 'orgx' : 'org';
       const list = [];
       // Sub-agrupaciones: una región tiene barrios
       const subs = Array.from({ length: 3 + ((rnd() * 3) | 0) }, () => ({ x: c.x + g() * c.sx * 0.6, y: c.y + g() * c.sy * 0.6 }));
@@ -28,7 +30,7 @@ EX.orgMap = (() => {
           y: s.y + g() * c.sy * 0.55,
           r: c.key === 'servers' ? 1.9 : 1.5 + rnd() * 0.5,
           color: P[c.color || 'asset'],
-          tags: ['org', 'org-' + c.key],
+          tags: [tag, tag + '-' + c.key],
           ta: 0,
           interactive: true,
           info: { cluster: c, idx: i },
@@ -42,7 +44,7 @@ EX.orgMap = (() => {
           .map((m) => ({ m, d: (m.x - n.x) ** 2 + (m.y - n.y) ** 2 }))
           .sort((a, b) => a.d - b.d)
           .slice(1, rnd() < 0.3 ? 3 : 2);
-        near.forEach(({ m }) => Wd.addEdge(n, m, { ta: 0, tags: ['org'], base: 0.24, color: [140, 165, 215] }));
+        near.forEach(({ m }) => Wd.addEdge(n, m, { ta: 0, tags: [tag], base: 0.24, color: [140, 165, 215] }));
       });
       // El "centro" de la región: el nodo más cercano al centroide
       const hub = list.reduce((b, n) => ((n.x - c.x) ** 2 + (n.y - c.y) ** 2 < (b.x - c.x) ** 2 + (b.y - c.y) ** 2 ? n : b), list[0]);
@@ -75,6 +77,7 @@ EX.orgMap = (() => {
 
   function drawTerrain(ctx, now) {
     terrain += (terrainTarget - terrain) * 0.04;
+    extOn += (extTarget - extOn) * 0.04;
     if (terrain < 0.01) return;
     const z = Wd.cam.z;
     // Retícula geográfica del mundo (se mueve y escala con la cámara)
@@ -99,7 +102,8 @@ EX.orgMap = (() => {
     // Curvas de nivel
     clusters.forEach((cl) => {
       const c = cl.def;
-      const dim = focusCluster && focusCluster !== c.key ? 0.4 : 1;
+      const dim = (focusCluster && focusCluster !== c.key ? 0.4 : 1) * (c.ext ? extOn : 1);
+      if (dim < 0.01) return;
       cl.rings.forEach((rg) => {
         ctx.strokeStyle = `rgba(130,150,210,${(0.11 - rg.i * 0.02) * terrain * dim})`;
         ctx.setLineDash(rg.i === 3 ? [1, 5] : []);
@@ -124,7 +128,8 @@ EX.orgMap = (() => {
       const c = cl.def;
       const p = Wd.project(c.x, c.y - c.sy * 1.22);
       const on = focusCluster === c.key;
-      const a = labels * (focusCluster && !on ? 0.35 : 1);
+      const a = labels * (focusCluster && !on ? 0.35 : 1) * (c.ext ? extOn : 1);
+      if (a < 0.01) return;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'alphabetic';
       if ('letterSpacing' in ctx) ctx.letterSpacing = '3px';
@@ -166,6 +171,7 @@ EX.orgMap = (() => {
 
   function hide() {
     if (!built) return;
+    showExt(false);
     Wd.tagged('org').forEach((n) => { n.ta = 0; });
     Wd.edges.forEach((e) => { if (e.tags.includes('org')) e.ta = 0; });
   }
@@ -176,8 +182,19 @@ EX.orgMap = (() => {
     Wd.edges.forEach((e) => { if (e.tags.includes('org')) e.ta = e.base * (keep(e.a) && keep(e.b) ? 1.6 : edgeLevel); });
   }
 
+  /* Regiones ampliadas: identidades, endpoints remotos, cargas cloud */
+  function showExt(on) {
+    build();
+    extTarget = on ? 1 : 0;
+    Wd.tagged('orgx').forEach((n) => { n.ta = on ? 1 : 0; if (on && !n.move) { n.x = n.home.x; n.y = n.home.y; } });
+    Wd.edges.forEach((e) => { if (e.tags.includes('orgx')) e.ta = on ? e.base : 0; });
+  }
+
+  /* Todos los activos visibles (incluye regiones ampliadas si están activas) */
+  const all = () => Wd.nodes.filter((n) => n.home && (n.tags.includes('org') || (extTarget && n.tags.includes('orgx'))));
+
   return {
-    build, reveal, hide, dim,
+    build, reveal, hide, dim, showExt, all,
     clusters,
     setTerrain: (v) => { terrainTarget = v; },
     setLabels: (v) => { labelsTarget = v; },

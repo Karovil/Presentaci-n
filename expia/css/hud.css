@@ -65,7 +65,7 @@ body.is-started .topbar { opacity: 1; }
   z-index: 7;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
   translate: 0 -50%;
   opacity: 0;
   transition: opacity 1.2s var(--ease) 0.8s;
@@ -80,7 +80,7 @@ body.is-started .depth { opacity: 1; }
   background: linear-gradient(var(--cyan), rgba(var(--cyan-rgb), 0.2));
   transition: height 1s var(--ease);
 }
-.depth button { position: relative; display: flex; align-items: center; gap: 12px; height: 18px; cursor: pointer; }
+.depth button { position: relative; display: flex; align-items: center; gap: 12px; height: clamp(9px, 1.55vh, 18px); cursor: pointer; }
 .depth button i { width: 7px; height: 1px; background: var(--dim); transition: width 0.5s var(--ease), background 0.4s; }
 .depth button span {
   font: 400 9.5px/1 var(--mono);

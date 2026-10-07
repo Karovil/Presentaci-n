@@ -13,7 +13,7 @@ EX.ctrl = (() => {
 
   function init() {
     list.forEach((s, i) => {
-      secs[i] = document.querySelector(`.scene[data-id="${s.id}"]`);
+      secs[i] = document.querySelector(`.scene[data-id="${s.id}"]`) || makeSection(s.id);
       mods[i] = EX.scenes[s.id] || {};
       mods[i].init && mods[i].init(secs[i]);
     });
@@ -21,6 +21,15 @@ EX.ctrl = (() => {
     bind();
     const h = parseInt(location.hash.slice(1), 10);
     if (h >= 2 && h <= list.length) { markStarted(); go(h - 1); } else go(0);
+  }
+
+  /* Las escenas nuevas construyen su propia capa de interfaz */
+  function makeSection(id) {
+    const sec = document.createElement('section');
+    sec.className = `scene scene--${id}`;
+    sec.dataset.id = id;
+    document.getElementById('stage').appendChild(sec);
+    return sec;
   }
 
   function markStarted() { started = true; document.body.classList.add('is-started'); }

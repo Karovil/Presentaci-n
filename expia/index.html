@@ -9,12 +9,14 @@
   <link rel="stylesheet" href="css/hud.css">
   <link rel="stylesheet" href="css/graph.css">
   <link rel="stylesheet" href="css/scenes.css">
+  <link rel="stylesheet" href="css/story.css">
 </head>
 <body>
   <!-- Mundo: el mapa vivo de la organización (un solo lienzo persistente) -->
   <canvas id="world" aria-hidden="true"></canvas>
   <div class="annos" aria-hidden="true"></div>
   <div class="probe" role="status"></div>
+  <div class="say" aria-live="polite"><p class="say__t"></p><p class="say__s"></p></div>
 
   <!-- HUD cartográfico -->
   <div class="frame" aria-hidden="true">
@@ -94,16 +96,26 @@
   <!-- Datos → núcleo → grafo → escenas → controlador -->
   <script src="js/data/narrative.js"></script>
   <script src="js/data/org.js"></script>
+  <script src="js/data/story.js"></script>
   <script src="js/core/utils.js"></script>
   <script src="js/graph/world.js"></script>
   <script src="js/graph/org-map.js"></script>
   <script src="js/graph/anno.js"></script>
   <script src="js/graph/case.js"></script>
   <script src="js/core/hud.js"></script>
+  <script src="js/graph/kit.js"></script>
+  <script src="js/graph/core.js"></script>
+  <script src="js/graph/agents.js"></script>
   <script src="js/scenes/01-boot.js"></script>
   <script src="js/scenes/02-map.js"></script>
   <script src="js/scenes/03-vuln.js"></script>
   <script src="js/scenes/04-context.js"></script>
+  <!-- Bloque 1 · fragmentación -->
+  <script src="js/scenes/05-sources.js"></script>
+  <script src="js/scenes/06-grow.js"></script>
+  <script src="js/scenes/07-alive.js"></script>
+  <script src="js/scenes/08-volume.js"></script>
+  <script src="js/scenes/09-intake.js"></script>
   <script src="js/core/controller.js"></script>
   <script src="js/main.js"></script>
 </body>

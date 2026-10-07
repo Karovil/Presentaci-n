@@ -1,0 +1,67 @@
+/* ==========================================================================
+   EXPIA · ESCENAS 05–39
+   Mismo lenguaje: texto mínimo, lectura instrumental, nada de tarjetas.
+   ========================================================================== */
+
+/* ---------- Frases grandes ---------- */
+.say {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 6;
+  width: min(1100px, 84vw);
+  translate: -50% -50%;
+  text-align: center;
+  pointer-events: none;
+  opacity: 0;
+  filter: blur(10px);
+  transition: opacity 0.45s var(--ease), filter 0.45s var(--ease);
+}
+.say.is-on { opacity: 1; filter: none; transition-duration: 0.9s; }
+.say[data-pos="top"] { top: calc(var(--fx) + 120px); translate: -50% 0; }
+.say[data-pos="low"] { top: auto; bottom: calc(var(--fx) + 70px); translate: -50% 0; }
+.say__t { font: 300 clamp(36px, 4.4vw, 80px)/1.06 var(--display); letter-spacing: -0.025em; color: var(--ink); text-shadow: 0 0 40px rgba(5, 7, 11, 0.9); }
+.say[data-size="m"] .say__t { font-size: clamp(28px, 3.1vw, 54px); }
+.say[data-size="s"] .say__t { font-size: clamp(22px, 2.2vw, 36px); }
+.say__t em { font-style: normal; color: var(--cyan); }
+.say__s { margin-top: 18px; font: 400 clamp(14px, 1.15vw, 18px)/1.5 var(--display); color: var(--ink-2); text-shadow: 0 0 20px rgba(5, 7, 11, 0.9); }
+.say__s:empty { display: none; }
+
+/* Panel de texto instrumental reutilizable (lado derecho) */
+.tally, .vol, .feed { position: absolute; right: calc(var(--fx) + 30px); }
+
+/* ---------- 06 · contador de entidades ---------- */
+.tally { bottom: calc(var(--fx) + 70px); text-align: right; transition: opacity 0.8s var(--ease); }
+.is-hidden-tally .tally { opacity: 0; }
+.tally__k { font: 400 10.5px/1 var(--mono); letter-spacing: 0.3em; text-transform: uppercase; color: var(--cyan); }
+.tally__n { margin-top: 12px; font: 300 clamp(48px, 5.4vw, 92px)/0.9 var(--display); letter-spacing: -0.03em; color: var(--ink); font-variant-numeric: tabular-nums; }
+.tally__u { margin-top: 10px; font: 400 11px/1 var(--mono); letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink-2); }
+.scene.is-active .tally { animation: rise 1s var(--ease) 1.2s both; }
+@keyframes rise { from { opacity: 0; translate: 0 10px; filter: blur(6px); } }
+
+/* ---------- 07 · registro de eventos ---------- */
+.feed {
+  top: calc(var(--fx) + 70px);
+  width: 270px;
+  list-style: none;
+  font: 400 10.5px/1 var(--mono);
+  color: var(--ink-2);
+  -webkit-mask-image: linear-gradient(#000 55%, transparent);
+          mask-image: linear-gradient(#000 55%, transparent);
+}
+.feed li { display: flex; align-items: center; gap: 10px; height: 26px; border-bottom: 1px solid var(--line); animation: feed-in 0.5s var(--ease); white-space: nowrap; }
+.feed li span { color: var(--muted); font-variant-numeric: tabular-nums; }
+.feed li i { width: 5px; height: 5px; border-radius: 50%; flex: none; }
+@keyframes feed-in { from { opacity: 0; translate: 10px 0; } }
+
+/* ---------- 08 · contadores de señales ---------- */
+.vol { top: 50%; translate: 0 -50%; width: 300px; }
+.vol__k { font: 400 10.5px/1 var(--mono); letter-spacing: 0.3em; text-transform: uppercase; color: var(--cyan); }
+.vol__n { margin: 12px 0 22px; font: 300 clamp(44px, 4.6vw, 78px)/0.9 var(--display); letter-spacing: -0.03em; color: var(--ink); font-variant-numeric: tabular-nums; }
+.vol ul { list-style: none; }
+.vol li { display: grid; grid-template-columns: 1fr auto; gap: 6px 10px; padding: 9px 0; border-top: 1px solid var(--line); font: 400 10px/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); }
+.vol li span { display: flex; align-items: center; gap: 9px; }
+.vol li span i { width: 6px; height: 6px; }
+.vol li b { font-weight: 400; color: var(--ink); font-variant-numeric: tabular-nums; }
+.vol li em { grid-column: 1 / -1; height: 1px; background: var(--line); }
+.vol li s { display: block; height: 100%; transform-origin: left; transform: scaleX(0); transition: transform 0.4s linear; }
