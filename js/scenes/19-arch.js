@@ -13,7 +13,7 @@
 
   const NS = 'http://www.w3.org/2000/svg';
   const R = 38;   // radio de los nodos (unidades del viewBox)
-  let el, svg, tip, lineEl, nodes = {}, edges = [], pulses = [], raf = 0, active = false;
+  let el, svg, tip, nodes = {}, edges = [], pulses = [], raf = 0, active = false;
 
   /* Iconos de trazo, centrados en 0,0 */
   const ICON = {
@@ -50,7 +50,6 @@
     el = section;
     svg = el.querySelector('.arch');
     tip = el.querySelector('.arch-tip');
-    lineEl = el.querySelector('.arch__line');
 
     const defs = mk('defs', {}, svg);
     const m = mk('marker', { id: 'arch-arrow', viewBox: '0 0 10 10', refX: 8, refY: 5, markerWidth: 7, markerHeight: 7, orient: 'auto-start-reverse' }, defs);
@@ -120,20 +119,12 @@
     raf = requestAnimationFrame(tick);
   }
 
-  function setLine(n) {
-    lineEl.classList.remove('is-in');
-    void lineEl.offsetWidth;
-    lineEl.textContent = D.lines[n];
-    lineEl.classList.add('is-in');
-  }
-
   S.enter = () => {
     active = true;
     hideTip();
-    setLine(0);
     cancelAnimationFrame(raf);
     raf = requestAnimationFrame(tick);
   };
-  S.setStep = (n) => { hideTip(); setLine(n); };
+  S.setStep = () => { hideTip(); };
   S.leave = () => { active = false; cancelAnimationFrame(raf); hideTip(); };
 })();

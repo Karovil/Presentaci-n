@@ -1491,3 +1491,13 @@ body[data-scene="future"] .hint { opacity: 0 !important; pointer-events: none; }
 .arch-tip.is-on { opacity: 1; translate: 0 0; }
 .arch-tip__k { font: 400 10px/1 var(--mono); letter-spacing: 0.26em; text-transform: uppercase; color: var(--cyan); }
 .arch-tip p { margin-top: 10px; font-size: 15px; line-height: 1.45; color: var(--ink); }
+
+/* Reducción de tiempo por analista */
+.saving { margin-top: 5vh; opacity: 0; filter: blur(8px); translate: 0 10px; transition: opacity 1s var(--ease) 1.4s, filter 1s var(--ease) 1.4s, translate 1.2s var(--ease) 1.4s; }
+.scene--compress.st-1 .saving { opacity: 1; filter: none; translate: 0 0; }
+.saving__k { font: 400 11px/1 var(--mono); letter-spacing: 0.3em; text-transform: uppercase; color: var(--cyan); }
+.saving__n { margin-top: 14px; font: 200 clamp(56px, 6.4vw, 112px)/1 var(--font); letter-spacing: -0.02em; color: #fff; font-variant-numeric: tabular-nums; text-shadow: 0 0 50px rgba(var(--cyan-rgb), 0.3); }
+.saving__n::before { content: '−'; margin-right: 0.08em; color: var(--cyan); }
+.saving__pct { margin-left: 0.08em; font-size: 0.5em; color: var(--cyan); vertical-align: 0.6em; }
+.saving__calc { margin-top: 12px; font: 400 10.5px/1.5 var(--mono); letter-spacing: 0.16em; color: var(--muted); }
+.scene--compress.st-1 .compress__line { margin-top: 4vh; }

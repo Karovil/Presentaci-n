@@ -175,16 +175,18 @@ Object.assign(IRI.data, {
     toLabel: 'Investigación automatizada y contextualizada',
     line: 'De reconstruir el contexto a revisarlo.',
     note: 'Estimación del flujo automatizado · a validar en el piloto',
+    /* Reducción de tiempo por analista: 3 días hábiles de 8 h frente a 5 min */
+    saving: {
+      label: 'Reducción de tiempo por analista',
+      manualMin: 3 * 8 * 60,   // 1.440 min
+      autoMin: 5,
+      calc: '3 días hábiles × 8 h = 1.440 min  →  5 min',
+    },
   },
 
   /* ---------- 19 · ARQUITECTURA ----------
      Coordenadas en un lienzo de 1600 × 900. step: paso en que aparece. */
   arch: {
-    lines: [
-      'Todo empieza con una alerta.',
-      'La orquestación vive en Kubernetes.',
-      'El agente usa herramientas y modelos, con control.',
-    ],
     nodes: [
       { id: 'user',   kind: 'user',   label: 'Usuario',            x: 230,  y: 340, step: 0, desc: 'Radica el caso o recibe la alerta de una identidad.' },
       { id: 'alert',  kind: 'alert',  label: 'Alerta',             x: 480,  y: 340, step: 0, desc: 'Señal que inicia la investigación de la identidad.', alert: true },

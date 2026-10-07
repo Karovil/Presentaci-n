@@ -9,7 +9,10 @@
   const S = { steps: 2 };
   IRI.scenes.compress = S;
 
-  let el, vEl, uEl, labFrom, labTo;
+  let el, vEl, uEl, labFrom, labTo, savEl;
+  // (1 − 5 / 1.440) × 100 = 99,65 %
+  const pct = () => (1 - D.saving.autoMin / D.saving.manualMin) * 100;
+  const fmt = (v) => v.toFixed(2).replace('.', ',');
 
   S.init = (section) => {
     el = section;
@@ -21,6 +24,9 @@
     labTo.textContent = D.toLabel;
     el.querySelector('.compress__line').textContent = D.line;
     el.querySelector('.compress__note').textContent = D.note;
+    el.querySelector('.saving__k').textContent = D.saving.label;
+    el.querySelector('.saving__calc').textContent = D.saving.calc;
+    savEl = el.querySelector('.saving__v');
     // La barra manual: los segmentos de trabajo de la escena 11
     el.querySelector('.bar-manual').innerHTML = IRI.data.manual.actions
       .map((a) => `<b style="flex:${a.hours}"></b>`).join('');
@@ -33,6 +39,10 @@
     uEl.textContent = to.unit;
   }
 
-  S.enter = () => show(0, false);
-  S.setStep = (n) => setTimeout(() => show(n, true), n >= 1 ? 900 : 0);
+  S.enter = () => { show(0, false); savEl.dataset.value = 0; savEl.textContent = fmt(0); };
+  S.setStep = (n) => {
+    setTimeout(() => show(n, true), n >= 1 ? 900 : 0);
+    if (n >= 1) setTimeout(() => U.countTo(savEl, pct(), { duration: 1800, format: fmt }), 1500);
+    else { savEl.dataset.value = 0; savEl.textContent = fmt(0); }
+  };
 })();
