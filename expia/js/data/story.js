@@ -55,6 +55,8 @@ EX.stations = {
   pipeline: { x: -3400, y: 3200 },
   agents:   { x: 0,     y: 3200 },
   twin:     { x: 3600,  y: 3200 },
+  transform:{ x: 3600,  y: 1500 },
+  path:     { x: -3600, y: 1500 },
   funnel:   { x: 3600,  y: 5000 },
   insight:  { x: 0,     y: 5000 },
   ai:       { x: -3400, y: 5000 },
