@@ -14,10 +14,9 @@ IRI.data = {
     { id: 'identity',   code: '02', name: 'Una identidad',    mood: 0.55 },
     { id: 'chaos',      code: '03', name: 'El caos',          mood: 0.3 },
     { id: 'silos',      code: '04', name: 'Piezas separadas', mood: 0.45, hint: 'Pasa el cursor sobre cada fuente' },
-    { id: 'analyst',    code: '05', name: 'El analista',      mood: 0.4 },
-    { id: 'question',   code: '06', name: 'La pregunta',      mood: 0.08 },
-    { id: 'shift',      code: '07', name: 'El cambio',        mood: 0.4 },
-    { id: 'reveal',     code: '08', name: 'Revelación',       mood: 0.6, hint: 'Fin de la primera parte' },
+    { id: 'question',   code: '05', name: 'La pregunta',      mood: 0.08 },
+    { id: 'shift',      code: '06', name: 'El cambio',        mood: 0.4 },
+    { id: 'reveal',     code: '07', name: 'Revelación',       mood: 0.6, hint: 'Fin de la primera parte' },
   ],
 
   defaultHint: 'Desplaza para continuar',
