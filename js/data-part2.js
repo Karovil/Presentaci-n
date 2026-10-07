@@ -15,7 +15,8 @@ IRI.data.scenes.push(
   { id: 'score',      code: '16', name: 'Puntaje de riesgo',     mood: 0.35 },
   { id: 'decide',     code: '17', name: 'El analista decide',    mood: 0.4 },
   { id: 'compress',   code: '18', name: '3 días → 5 minutos',    mood: 0.2 },
-  { id: 'future',     code: '19', name: 'El futuro',             mood: 0.6, hint: 'Fin de la segunda parte' },
+  { id: 'arch',       code: '19', name: 'Arquitectura',          mood: 0.35, hint: 'Pasa el cursor por cada componente' },
+  { id: 'future',     code: '20', name: 'El futuro',             mood: 0.6, hint: 'Fin de la segunda parte' },
 );
 
 /* Caso que se investiga durante toda la segunda parte */
@@ -176,7 +177,34 @@ Object.assign(IRI.data, {
     note: 'Estimación del flujo automatizado · a validar en el piloto',
   },
 
-  /* ---------- 19 · EL FUTURO ---------- */
+  /* ---------- 19 · ARQUITECTURA ----------
+     Coordenadas en un lienzo de 1600 × 900. step: paso en que aparece. */
+  arch: {
+    lines: [
+      'Todo empieza con una alerta.',
+      'La orquestación vive en Kubernetes.',
+      'El agente usa herramientas y modelos, con control.',
+    ],
+    nodes: [
+      { id: 'user',   kind: 'user',   label: 'Usuario',            x: 230,  y: 340, step: 0, desc: 'Radica el caso o recibe la alerta de una identidad.' },
+      { id: 'alert',  kind: 'alert',  label: 'Alerta',             x: 480,  y: 340, step: 0, desc: 'Señal que inicia la investigación de la identidad.', alert: true },
+      { id: 'src',    kind: 'src',    label: 'Fuentes de datos',   x: 780,  y: 250, step: 0, desc: 'Autenticaciones, dispositivos, aplicaciones, alertas e incidentes.' },
+      { id: 'db',     kind: 'db',     label: 'Base de datos',      x: 1080, y: 340, step: 0, desc: 'Evidencia normalizada y contexto de la identidad.' },
+      { id: 'eks',    kind: 'eks',    label: 'EKS',                x: 330,  y: 580, step: 1, desc: 'Kubernetes gestionado: ejecuta y escala la orquestación.' },
+      { id: 'agent',  kind: 'agent',  label: 'Agent ID',           x: 640,  y: 720, step: 1, desc: 'Agente asociado a la investigación de la identidad.' },
+      { id: 'core',   kind: 'core',   label: 'Agent Core',         x: 960,  y: 580, step: 2, desc: 'Núcleo del agente: razona y decide qué herramienta usar.' },
+      { id: 'mcp',    kind: 'mcp',    label: 'MCP y Tools',        x: 1300, y: 580, step: 2, desc: 'Herramientas controladas para consultar las fuentes.' },
+      { id: 'llm',    kind: 'llm',    label: 'LiteLLM',            x: 960,  y: 810, step: 2, desc: 'Puerta de enlace única hacia los modelos de IA.' },
+      { id: 'models', kind: 'models', label: 'Modelos IA',         x: 1300, y: 810, step: 2, desc: 'Modelos que explican la evidencia y responden preguntas.' },
+    ],
+    edges: [
+      ['user', 'alert', 0], ['alert', 'src', 0], ['src', 'db', 0],
+      ['alert', 'eks', 1], ['eks', 'db', 1], ['eks', 'agent', 1],
+      ['agent', 'core', 2], ['core', 'mcp', 2], ['agent', 'llm', 2], ['llm', 'models', 2],
+    ],
+  },
+
+  /* ---------- 20 · EL FUTURO ---------- */
   future: {
     today: 'Hoy',
     tomorrow: 'Mañana',

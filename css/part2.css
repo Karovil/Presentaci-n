@@ -1411,3 +1411,83 @@
 .future__line { font-size: clamp(16px, 1.4vw, 22px); font-weight: 300; color: var(--ink-2); white-space: nowrap; }
 .future__end { margin-top: 14px; font: 400 10px/1 var(--mono); letter-spacing: 0.4em; text-transform: uppercase; color: var(--muted); }
 body[data-scene="future"] .hint { opacity: 0 !important; pointer-events: none; }
+
+/* ==========================================================================
+   19 — ARQUITECTURA
+   ========================================================================== */
+.arch {
+  position: absolute;
+  left: 2vw; right: 4vw;
+  top: 6vh; bottom: 8vh;
+  width: 94vw; height: 86vh;
+  overflow: visible;
+  pointer-events: none;
+}
+.arch__line.is-in { animation: text-in 0.8s var(--ease); }
+
+/* Conexiones: se dibujan al aparecer su paso */
+.arch-edge {
+  fill: none;
+  stroke: rgba(150, 180, 235, 0.35);
+  stroke-width: 1.2;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  opacity: 0;
+  transition: stroke-dashoffset 1.2s var(--ease-io) 0.5s, stroke 0.3s, opacity 0.6s var(--ease) 0.5s;
+}
+.arch-arrow { fill: rgba(150, 180, 235, 0.6); }
+.scene--arch.is-active .arch-edge[data-step="0"],
+.scene--arch.st-1 .arch-edge[data-step="1"],
+.scene--arch.st-2 .arch-edge[data-step="2"] { stroke-dashoffset: 0; opacity: 1; }
+.scene--arch.has-hot .arch-edge { opacity: 0.3; }
+.scene--arch.has-hot .arch-edge.is-hot { opacity: 1; stroke: rgba(var(--cyan-rgb), 0.85); }
+
+.arch-pulse { fill: var(--cyan); filter: drop-shadow(0 0 4px rgba(var(--cyan-rgb), 0.9)); opacity: 0; }
+.arch-pulse.is-alert { fill: var(--red); filter: drop-shadow(0 0 4px rgba(var(--red-rgb), 0.9)); }
+
+/* Componentes */
+.arch-node {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.9s var(--ease) 0.2s;
+}
+.scene--arch.is-active .arch-node[data-step="0"],
+.scene--arch.st-1 .arch-node[data-step="1"],
+.scene--arch.st-2 .arch-node[data-step="2"] { opacity: 1; pointer-events: auto; cursor: default; }
+.arch-node__shape {
+  fill: rgba(9, 16, 31, 0.92);
+  stroke: rgba(170, 200, 255, 0.3);
+  stroke-width: 1.2;
+  transition: stroke 0.3s, filter 0.3s;
+}
+.arch-node__halo { fill: none; stroke: rgba(var(--cyan-rgb), 0); stroke-width: 1; stroke-dasharray: 2 5; transition: stroke 0.3s; }
+.arch-node__icon { fill: none; stroke: var(--ink-2); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; transition: stroke 0.3s; }
+.arch-node__label { fill: var(--ink-2); font: 400 13px var(--mono); letter-spacing: 0.24em; transition: fill 0.3s; }
+.arch-node.is-hot .arch-node__shape { stroke: rgba(var(--cyan-rgb), 0.85); filter: drop-shadow(0 0 12px rgba(var(--cyan-rgb), 0.35)); }
+.arch-node.is-hot .arch-node__halo { stroke: rgba(var(--cyan-rgb), 0.5); }
+.arch-node.is-hot .arch-node__icon { stroke: var(--ink); }
+.arch-node.is-hot .arch-node__label { fill: var(--ink); }
+.arch-node.is-alert .arch-node__shape { stroke: rgba(var(--red-rgb), 0.55); }
+.arch-node.is-alert .arch-node__icon { stroke: var(--red); }
+.arch-node--mcp .arch-node__icon { stroke: var(--cyan); }
+.arch-node--models .arch-node__icon { stroke: var(--violet); }
+.arch-node--eks .arch-node__shape { stroke: rgba(var(--cyan-rgb), 0.45); }
+
+/* Ficha al pasar el cursor */
+.arch-tip {
+  position: fixed;
+  z-index: 8;
+  width: min(300px, 70vw);
+  padding: 16px 18px;
+  border: 1px solid var(--glass-border);
+  border-left: 1px solid var(--cyan);
+  background: linear-gradient(160deg, rgba(20, 32, 58, 0.7), rgba(8, 14, 28, 0.82));
+  backdrop-filter: blur(12px);
+  opacity: 0;
+  translate: 0 6px;
+  pointer-events: none;
+  transition: opacity 0.3s var(--ease), translate 0.4s var(--ease);
+}
+.arch-tip.is-on { opacity: 1; translate: 0 0; }
+.arch-tip__k { font: 400 10px/1 var(--mono); letter-spacing: 0.26em; text-transform: uppercase; color: var(--cyan); }
+.arch-tip p { margin-top: 10px; font-size: 15px; line-height: 1.45; color: var(--ink); }
