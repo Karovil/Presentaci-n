@@ -1,0 +1,59 @@
+/* ==========================================================================
+   EXPIA · ANOTACIONES Y SONDA
+   Texto anclado al mundo (con línea guía dibujada en el lienzo) y lectura
+   contextual que sigue al cursor.
+   ========================================================================== */
+.annos { position: fixed; inset: 0; z-index: 4; pointer-events: none; }
+.anno {
+  position: absolute;
+  left: 0; top: 0;
+  translate: 10px -50%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  filter: blur(6px);
+  transition: opacity 0.6s var(--ease) 0.25s, filter 0.6s var(--ease) 0.25s;
+}
+.anno--left { translate: calc(-100% - 10px) -50%; text-align: right; align-items: flex-end; }
+.anno.is-on { opacity: 1; filter: none; }
+.anno__k { font: 400 9.5px/1 var(--mono); letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted); }
+.anno__k--red { color: var(--red); }
+.anno strong { font: 400 clamp(18px, 1.5vw, 26px)/1 var(--display); letter-spacing: 0.02em; color: var(--ink); }
+.anno__s { font-size: 13px; color: var(--ink-2); }
+.anno__v { font: 300 clamp(20px, 1.8vw, 30px)/1 var(--mono); color: var(--ink); font-variant-numeric: tabular-nums; }
+.anno__tag {
+  align-self: flex-start;
+  padding: 5px 8px;
+  border: 1px solid rgba(var(--red-rgb), 0.55);
+  background: rgba(var(--red-rgb), 0.08);
+  font: 500 10px/1 var(--mono);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #ff8c97;
+}
+.anno--detect .anno__k { color: var(--ink-2); }
+
+/* Sonda contextual */
+.probe {
+  position: fixed;
+  left: 0; top: 0;
+  z-index: 8;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 190px;
+  padding: 13px 15px 12px;
+  border-left: 1px solid var(--cyan);
+  background: linear-gradient(100deg, rgba(10, 16, 30, 0.92), rgba(10, 16, 30, 0.7));
+  backdrop-filter: blur(10px);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s var(--ease);
+}
+.probe.is-on { opacity: 1; }
+.probe__k { font: 400 9px/1 var(--mono); letter-spacing: 0.24em; text-transform: uppercase; color: var(--cyan); }
+.probe strong { font: 400 16px/1.2 var(--display); color: var(--ink); max-width: 260px; white-space: normal; }
+.probe__row { display: flex; justify-content: space-between; gap: 18px; font: 400 10.5px/1.4 var(--mono); color: var(--ink-2); }
+.probe__row em { font-style: normal; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; font-size: 9.5px; }
