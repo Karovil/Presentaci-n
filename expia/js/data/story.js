@@ -204,6 +204,11 @@ EX.story = {
       { id: 'exposure', name: 'Exposición',  domain: 'Inteligencia de exposición',  color: 'red',    desc: 'Qué es alcanzable desde fuera.' },
       { id: 'software', name: 'Software',    domain: 'Aplicaciones no estándar',    color: 'yellow', desc: 'Versiones, software no estándar y su riesgo.' },
     ],
+    /* Posiciones relativas al núcleo (unidades del mundo) */
+    layout: {
+      argus: [-430, -150], agora: [430, -150], aegis: [0, 330],
+      identity: [-840, 170], asset: [-660, -470], threat: [660, -470], network: [840, 170], exposure: [-440, 560], software: [440, 560],
+    },
     intro: ['Para resolver esto, EXPIA necesita especialistas.', 'Especialistas, no módulos.'],
     moreLine: 'No un cerebro que lo hace todo: especialistas en cada dimensión.',
   },

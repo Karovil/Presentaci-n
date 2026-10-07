@@ -281,9 +281,10 @@ EX.say = (() => {
       el.dataset.pos = pos;
       el.dataset.size = size;
       el.classList.toggle('is-on', !!text);
+      document.body.classList.toggle('say-low', !!text && pos === 'low');
     };
     if (el.classList.contains('is-on')) { el.classList.remove('is-on'); timer = setTimeout(swap, 450); } else swap();
   }
-  const clear = () => { clearTimeout(timer); el.classList.remove('is-on'); };
+  const clear = () => { clearTimeout(timer); el.classList.remove('is-on'); document.body.classList.remove('say-low'); };
   return Object.assign(say, { clear });
 })();
