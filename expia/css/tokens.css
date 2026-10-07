@@ -84,7 +84,7 @@ body::after {
 }
 .scene.is-active { opacity: 1; visibility: visible; transition: opacity 1s var(--ease) 0.3s, visibility 0s; }
 .scene * { pointer-events: none; }
-.scene.is-active .is-interactive, .scene.is-active button { pointer-events: auto; }
+.scene.is-active .is-interactive, .scene.is-active .is-interactive *, .scene.is-active button { pointer-events: auto; }
 
 .ico { width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; }
 
