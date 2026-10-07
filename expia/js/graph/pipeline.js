@@ -92,6 +92,7 @@ EX.pipeline = (() => {
         ctx.fillRect(top.x - 3, y - 0.5, 6, 1);
       }
       // Etiquetas alternadas arriba / abajo para que no se encimen
+      if (Wd.cam.z < 0.25) return;
       const up = i % 2 === 0;
       ctx.textAlign = 'center';
       ctx.textBaseline = up ? 'bottom' : 'top';

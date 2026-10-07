@@ -53,7 +53,7 @@ EX.agents = (() => {
     if (peekAnno) peekAnno.remove();
     peekAnno = EX.anno.create({
       target: a.n, dx: 70, dy: -54, color: a.color,
-      html: `<span class="anno__k">${a.d.name} · ${a.state === 'work' ? 'Investigando' : a.state === 'dim' ? 'No requerido en este caso' : 'En espera'}</span><span class="anno__s">${a.task || a.d.desc}</span>`,
+      html: `<span class="anno__k">${a.d.name} · ${a.state === 'work' ? 'Investigando' : a.state === 'dim' ? 'No requerido en este caso' : 'En espera'}</span><span class="anno__s">${a.state === 'dim' ? a.d.desc : (a.task || a.d.desc)}</span>`,
     }).show();
     setTimeout(() => { if (peekAnno) { peekAnno.remove(); peekAnno = null; } }, 3200);
   }
@@ -125,7 +125,8 @@ EX.agents = (() => {
         ctx.arc(p.x, p.y, r * (1.2 + pk * 1.4), 0, Math.PI * 2);
         ctx.stroke();
       }
-      // Nombre y dominio
+      // Nombre y dominio (solo si hay espacio para leerlo)
+      if (Wd.cam.z < 0.3) return;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'top';
       if ('letterSpacing' in ctx) ctx.letterSpacing = '3px';

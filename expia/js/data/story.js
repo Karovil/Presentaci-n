@@ -467,9 +467,9 @@ EX.story = {
       { label: 'Controlado',         color: 'green' },
     ],
     hotspots: [
-      { cluster: 'servers', label: 'Servidores DMZ',         level: 'Crítica' },
-      { cluster: 'apps',    label: 'Aplicaciones publicadas', level: 'Alta' },
-      { cluster: 'users',   label: 'Cuentas privilegiadas',  level: 'Alta' },
+      { cluster: 'servers',  label: 'Servidores DMZ',          level: 'Crítica', dx: -150, dy: 150 },
+      { cluster: 'external', label: 'Servicios publicados',    level: 'Crítica', dx: 140, dy: 40 },
+      { cluster: 'users',    label: 'Cuentas privilegiadas',   level: 'Alta',    dx: -40, dy: -120 },
     ],
   },
 
