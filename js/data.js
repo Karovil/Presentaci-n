@@ -13,8 +13,7 @@ IRI.data = {
     { id: 'activation', code: '01', name: 'Activación',       mood: 0.2 },
     { id: 'identity',   code: '02', name: 'Una identidad',    mood: 0.55 },
     { id: 'chaos',      code: '03', name: 'El caos',          mood: 0.3 },
-    { id: 'question',   code: '04', name: 'La pregunta',      mood: 0.08 },
-    { id: 'reveal',     code: '05', name: 'Revelación',       mood: 0.6, hint: 'Fin de la primera parte' },
+    { id: 'reveal',     code: '04', name: 'Revelación',       mood: 0.6, hint: 'Fin de la primera parte' },
   ],
 
   defaultHint: 'Desplaza para continuar',

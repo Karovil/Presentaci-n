@@ -5,17 +5,17 @@
    Se añaden a IRI.data sin modificar la primera parte.
    ========================================================================== */
 IRI.data.scenes.push(
-  { id: 'alert',      code: '06', name: 'La alerta',             mood: 0.35, part: 2 },
-  { id: 'manual',     code: '07', name: 'Investigación manual',  mood: 0.35, hint: 'Avanza para acelerar cada acción' },
-  { id: 'time',       code: '08', name: 'El tiempo',             mood: 0.3 },
-  { id: 'ask',        code: '09', name: 'Otra pregunta',         mood: 0.06 },
-  { id: 'automation', code: '10', name: 'Automatización',        mood: 0.45 },
-  { id: 'ai',         code: '11', name: 'La capa de IA',         mood: 0.4, hint: 'Pasa el cursor sobre cada referencia' },
-  { id: 'score',      code: '12', name: 'Puntaje de riesgo',     mood: 0.35 },
-  { id: 'decide',     code: '13', name: 'El analista decide',    mood: 0.4 },
-  { id: 'compress',   code: '14', name: '3 días → 5 minutos',    mood: 0.2 },
-  { id: 'arch',       code: '15', name: 'Arquitectura',          mood: 0.35, hint: 'Pasa el cursor por cada componente' },
-  { id: 'future',     code: '16', name: 'El futuro',             mood: 0.6, hint: 'Fin de la segunda parte' },
+  { id: 'alert',      code: '05', name: 'La alerta',             mood: 0.35, part: 2 },
+  { id: 'manual',     code: '06', name: 'Investigación manual',  mood: 0.35, hint: 'Avanza para acelerar cada acción' },
+  { id: 'time',       code: '07', name: 'El tiempo',             mood: 0.3 },
+  { id: 'ask',        code: '08', name: 'Otra pregunta',         mood: 0.06 },
+  { id: 'automation', code: '09', name: 'Automatización',        mood: 0.45 },
+  { id: 'ai',         code: '10', name: 'La capa de IA',         mood: 0.4, hint: 'Pasa el cursor sobre cada referencia' },
+  { id: 'score',      code: '11', name: 'Puntaje de riesgo',     mood: 0.35 },
+  { id: 'decide',     code: '12', name: 'El analista decide',    mood: 0.4 },
+  { id: 'compress',   code: '13', name: '3 días → 5 minutos',    mood: 0.2 },
+  { id: 'arch',       code: '14', name: 'Arquitectura',          mood: 0.35, hint: 'Pasa el cursor por cada componente' },
+  { id: 'future',     code: '15', name: 'El futuro',             mood: 0.6, hint: 'Fin de la segunda parte' },
 );
 
 /* Caso que se investiga durante toda la segunda parte */
