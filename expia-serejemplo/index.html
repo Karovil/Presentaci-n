@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EXPIA · En el radar</title>
+  <meta name="description" content="EXPIA en tres minutos: por qué la exposición de la organización debe estar en el radar.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Radar: un único lienzo persistente -->
+  <canvas id="radar" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="top">
+    <div class="top__brand"><b>EXPIA</b><span>/</span><span>En el radar</span></div>
+    <div class="top__scene"><b data-num>00 / 10</b><span data-name>Listo</span></div>
+    <div class="live" title="Ataques estimados contra una organización en Colombia desde que empezó la presentación (Check Point, oct 2026)">
+      <svg class="live__ring" viewBox="0 0 36 36" aria-hidden="true"><circle class="track" cx="18" cy="18" r="15"/><circle class="fill" cx="18" cy="18" r="15"/></svg>
+      <div class="live__txt">
+        <span class="live__clock"><i></i><b data-clock>00:00</b><em>/ 03:00</em></span>
+        <span class="live__att"><b data-attacks>0</b> ataques a una org. en Colombia desde que empezamos</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Pantalla de espera -->
+  <div class="gate">
+    <p class="gate__k">Exposure &amp; Intelligence Platform</p>
+    <p class="gate__name">EXPIA</p>
+    <div class="start">
+      <button class="start--go" type="button">Iniciar · 03:00</button>
+      <button class="start--auto" type="button">Modo automático</button>
+    </div>
+    <p class="gate__keys">→ / espacio avanzar · ← retroceder · F pantalla completa · N notas · A automático · R reiniciar</p>
+  </div>
+
+  <main id="stage"></main>
+
+  <nav class="pace" aria-label="Ritmo de la presentación"></nav>
+  <aside class="notes" aria-live="polite"><span>Guion</span><p></p></aside>
+
+  <script src="js/data.js"></script>
+  <script src="js/radar.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
