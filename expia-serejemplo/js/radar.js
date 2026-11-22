@@ -37,8 +37,14 @@ SX.radar = (() => {
       events.push({ ...e, x: Math.cos(a) * e.d, y: Math.sin(a) * e.d, al: 0, ta: 0, lit: 0, seen: false, la: 0 });
     });
   }
-  function showEvents(on, labels = on) {
-    events.forEach((e) => { e.ta = on ? 1 : (labels === 'faint' ? 0.35 : 0); e.labels = labels; if (!on) e.seen = labels === 'faint' ? e.seen : false; });
+  /* pick: resalta solo algunas señales (p. ej. las que entraron por un proveedor) */
+  function showEvents(on, labels = on, pick = null) {
+    events.forEach((e) => {
+      e.hl = !!(pick && pick(e));
+      e.ta = on ? 1 : e.hl ? 1 : (labels === 'faint' ? (pick ? 0.18 : 0.35) : 0);
+      e.labels = labels;
+      if (!on && labels !== 'faint') e.seen = false;
+    });
   }
 
   function makeNoise(n) {
@@ -179,8 +185,13 @@ SX.radar = (() => {
         ctx.lineWidth = 1;
         ctx.beginPath(); ctx.arc(x, y, 6 + (1 - e.lit) * 26, 0, TAU); ctx.stroke();
       }
-      ctx.fillStyle = rgba(c, a);
-      ctx.beginPath(); ctx.arc(x, y, 3.6, 0, TAU); ctx.fill();
+      if (e.hl) {
+        const ph = (now / 1400) % 1;
+        ctx.strokeStyle = rgba(c, (1 - ph) * 0.8 * e.al); ctx.lineWidth = 1.4;
+        ctx.beginPath(); ctx.arc(x, y, 8 + ph * 34, 0, TAU); ctx.stroke();
+      }
+      ctx.fillStyle = rgba(c, e.hl ? e.al : a);
+      ctx.beginPath(); ctx.arc(x, y, e.hl ? 5 : 3.6, 0, TAU); ctx.fill();
       ctx.strokeStyle = rgba(c, a * 0.5);
       ctx.beginPath(); ctx.arc(x, y, 8, 0, TAU); ctx.stroke();
       /* etiqueta */

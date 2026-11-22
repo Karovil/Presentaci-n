@@ -117,9 +117,12 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 /* Número gigante */
 .giant { font-size: clamp(96px, 17vw, 230px); font-weight: 500; line-height: 0.85; letter-spacing: -0.05em; font-variant-numeric: tabular-nums; }
 .giant small { font-size: 0.42em; color: var(--ink-2); margin-left: 0.05em; letter-spacing: -0.02em; }
-.giant--red { color: var(--red); font-size: clamp(84px, 14vw, 200px); }
-.scene--door .giant { color: var(--orange); margin-bottom: 14px; }
-.scene--here .lead { margin-top: 14px; }
+.tone--orange .giant { color: var(--orange); }
+.tone--violet .giant { color: var(--violet); }
+.tone--red .giant { color: var(--red); }
+.tone--violet .k { color: var(--violet); }
+.giant { margin-bottom: 14px; }
+.giant .pre { font-size: 0.26em; margin: 0 0.2em 0 0; vertical-align: 0.95em; color: var(--ink-2); }
 .arrow-up { color: var(--red); font-weight: 500; }
 
 /* Carrera */

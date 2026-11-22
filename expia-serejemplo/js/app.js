@@ -13,17 +13,17 @@
     hook: (d) => `
       <div class="center">
         <p class="k">EXPIA · Exposure &amp; Intelligence Platform</p>
-        <h1 class="mega"><span class="r">Tienes</span> <span class="r">3 minutos.</span></h1>
+        <h1 class="mega"><span class="r">Tenemos</span> <span class="r">3 minutos.</span></h1>
         <p class="lead r">Un atacante necesita menos.</p>
       </div>`,
     world: (d) => `
       <div class="corner tl"><p class="k">Radar global · 2026</p><h2 class="h2">${d.title}</h2></div>
       <p class="bottom-line">${d.line}</p>`,
-    door: (d) => `
-      <div class="col">
+    stat: (d) => `
+      <div class="col tone--${d.tone || 'orange'}">
         <p class="k">${d.k}</p>
-        <p class="giant"><span data-count="${d.value}" data-from="${d.from}">${d.from}</span><small>${d.unit}</small></p>
-        <p class="lead">de las brechas ${d.big}</p>
+        <p class="giant">${d.prefix ? `<small class="pre">${d.prefix}</small>` : ''}<span data-count="${d.value}" data-from="${d.from || 0}" data-dec="${d.dec || 0}">0</span>${d.unit ? `<small>${d.unit}</small>` : ''}</p>
+        <p class="lead">${d.big}</p>
         <p class="sub">${d.sub}</p>
         <p class="src">${d.src}</p>
       </div>`,
@@ -32,10 +32,9 @@
         <p class="k">La carrera</p>
         <div class="race">
           <div class="race__row att"><p class="race__n">${d.att.n}<small>${d.att.u}</small></p><div><p class="race__l">${d.att.l}</p><p class="src">${d.att.src}</p></div></div>
-          <div class="race__bar"><i class="a"></i><i class="b"></i><span class="race__patch">Parche</span></div>
+          <div class="race__bar"><i class="a"></i><i class="b"></i><span class="race__patch">${d.patch}</span></div>
           <div class="race__row def"><p class="race__n">${d.def.n}<small>${d.def.u}</small></p><div><p class="race__l">${d.def.l}</p><p class="src">${d.def.src}</p></div></div>
         </div>
-        <p class="sub">${d.foot}</p>
         <p class="lead lead--s">${d.line}</p>
       </div>`,
     ai: (d) => `
@@ -46,14 +45,6 @@
         <p class="src">${d.src}</p>
         <p class="pill">${d.side} <i>${d.sideSrc}</i></p>
         <p class="lead lead--s">${d.line}</p>
-      </div>`,
-    here: (d) => `
-      <div class="col">
-        <p class="k">${d.k}</p>
-        <p class="giant giant--red"><span data-count="${d.value}">0</span></p>
-        <p class="lead">${d.big}</p>
-        <p class="sub">${d.sub} <span class="arrow-up">↗</span></p>
-        <p class="src">${d.src}</p>
       </div>`,
     noise: (d) => `
       <div class="corner tl">
@@ -88,7 +79,7 @@
   const secs = S.map((s) => {
     const el = document.createElement('section');
     el.className = `scene scene--${s.id}`;
-    el.innerHTML = html[s.id](s);
+    el.innerHTML = html[s.type](s);
     stage.appendChild(el);
     return el;
   });
@@ -102,7 +93,8 @@
   const radarFor = {
     hook()   { RD.view({ cx: 0.5, cy: 0.5, r: 0.4, dim: 0.35 }); RD.showEvents(false); RD.showNoise(0); RD.showChain(false); },
     world()  { RD.view({ cx: narrow() ? 0.5 : 0.6, cy: 0.55, r: 0.36, dim: 1 }); RD.showEvents(true); RD.showNoise(0); RD.showChain(false); },
-    door()   { RD.view(side({ cx: 0.76, cy: 0.5, r: 0.42, dim: 0.4 })); RD.showEvents(false, 'faint'); RD.showNoise(0); RD.showChain(false); },
+    money()  { RD.view(side({ cx: 0.78, cy: 0.5, r: 0.42, dim: 0.4 })); RD.showEvents(false, 'faint'); RD.showNoise(0); RD.showChain(false); },
+    third()  { RD.view(side({ cx: 0.76, cy: 0.5, r: 0.42, dim: 0.55 })); RD.showEvents(false, 'faint', (e) => e.third); RD.showNoise(0); RD.showChain(false); },
     race()   { RD.view(side({ cx: 0.86, cy: 0.5, r: 0.46, dim: 0.22 })); RD.showEvents(false, 'faint'); RD.showNoise(0); RD.showChain(false); },
     ai()     { RD.view({ cx: 0.5, cy: 0.5, r: 0.48, dim: 0.22 }); RD.showEvents(false); RD.showNoise(0.35); RD.showChain(false); },
     here()   { RD.view(side({ cx: 0.74, cy: 0.52, r: 0.4, dim: 0.5 })); RD.showEvents(false); RD.showNoise(0.12); RD.showChain(false); },
@@ -115,15 +107,16 @@
   /* ---------- Contadores ---------- */
   function countUp(root) {
     root.querySelectorAll('[data-count]').forEach((el, i) => {
-      const to = +el.dataset.count, from = +(el.dataset.from || 0);
+      const to = +el.dataset.count, from = +(el.dataset.from || 0), dec = +(el.dataset.dec || 0);
+      const f = (n) => new Intl.NumberFormat('es-CO', { minimumFractionDigits: dec, maximumFractionDigits: dec }).format(n);
       const dur = 1400, t0 = performance.now() + 500 + i * 220;
-      el.textContent = fmt(from);
+      el.textContent = f(from);
       const tick = (now) => {
         const t = Math.max(0, Math.min(1, (now - t0) / dur));
         const e = 1 - Math.pow(1 - t, 3);
-        el.textContent = fmt(Math.round(from + (to - from) * e));
+        el.textContent = f(dec ? from + (to - from) * e : Math.round(from + (to - from) * e));
         if (t < 1 && secs[idx] === root) requestAnimationFrame(tick);
-        else if (secs[idx] !== root) el.textContent = fmt(to);
+        else if (secs[idx] !== root) el.textContent = f(to);
       };
       requestAnimationFrame(tick);
     });

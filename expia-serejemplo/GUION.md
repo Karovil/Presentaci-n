@@ -1,49 +1,61 @@
 # Guion · EXPIA en el radar (≤ 3:00)
 
-≈ 385 palabras · unos 2:35 a ritmo natural, y deja aire para las pausas.
-Consejo: antes de empezar, señala el reloj de arriba a la derecha. La escena 06 depende de ese momento.
+**Audiencia:** vicepresidentes. Lenguaje de negocio (clientes, dinero, confianza, proveedores), sin tecnicismos.
+≈ 400 palabras · unos 2:40 a ritmo natural, y deja aire para las pausas.
+Consejo: al empezar, señala el reloj de arriba a la derecha. Hacia el **2:26** marca el primer intento de ataque, justo durante la escena de EXPIA: si lo ves, señálalo.
 
 **01 · Tres minutos (0:00)**
-Tenemos tres minutos. Les pido que miren el reloj de arriba a la derecha: va a contar algo mientras hablo.
+Tenemos tres minutos. Les pido que miren el reloj de arriba a la derecha: va a contar algo mientras hablamos.
 
-**02 · 2026 en el radar (0:12)**
-2026 no ha sido un año normal. Plataformas educativas con cientos de millones de registros, plantas de agua bloqueadas por credenciales por defecto, el sector financiero coreano atacado con IA, una guerra que también se libra en la red. Sectores y países distintos, un mismo patrón: lo que estaba expuesto.
+**02 · La banca, en la mira (0:12)**
+Este es el radar de 2026 para la banca. JPMorgan, Visa y Mastercard: datos de clientes publicados en noviembre. Aquí en Colombia, BBVA y Nu, en marzo. Dieciséis entidades financieras en Corea atacadas con inteligencia artificial. Cooperativas en Estados Unidos con servicios caídos durante meses. Bancos distintos, países distintos, un mismo patrón: la puerta estaba abierta.
 
-**03 · La puerta principal (0:36)**
-Y hay un dato que cambia la conversación: por primera vez en diecinueve años de informe de Verizon, la primera vía de entrada de las brechas es explotar una vulnerabilidad. Treinta y uno por ciento. Ya no es la contraseña robada: es lo que dejamos expuesto.
+**03 · Lo que cuesta (0:36)**
+Y abrir esa puerta cuesta: más de seis millones de dólares por brecha en el sector financiero. Y para liberar los sistemas secuestrados de un banco, los atacantes piden en promedio tres millones: más que a cualquier otra industria.
 
-**04 · La carrera (0:54)**
-Y es una carrera que vamos perdiendo. En promedio, el atacante explota la falla siete días antes de que exista el parche. Nosotros tardamos cuarenta y tres días en cerrar las vulnerabilidades que ya sabemos que se están explotando. Solo una de cada cuatro críticas se cierra por completo.
+**04 · La puerta no siempre es nuestra (0:52)**
+Y la puerta no siempre es nuestra: casi la mitad de las brechas entra por un proveedor o un aliado. Así les pasó a BBVA y Nu en Colombia, y a JPMorgan este mes.
 
-**05 · El atacante ya automatizó (1:14)**
-Además, el atacante ya automatizó. En septiembre, cientos de agentes de IA comprometieron 440 servidores en 48 países pocos días después de publicada la falla. Una de cada cuatro brechas maliciosas ya usa IA. Ellos no investigan un activo a la vez. ¿Por qué nosotros sí?
+**05 · La carrera (1:08)**
+Y es una carrera. Los atacantes usan una falla, en promedio, una semana antes de que exista la solución. Nosotros tardamos cuarenta y tres días en cerrarla. Ellos se mueven en días; nosotros, en semanas.
 
-**06 · Aquí (1:34)**
-Y no es un problema de otros. En Colombia cada organización recibe en promedio más de cuatro mil ataques por semana. Uno cada dos minutos y medio. Antes de que termine esta presentación, el reloj de arriba va a marcar uno.
+**06 · El atacante ya automatizó (1:24)**
+Y ya automatizaron: cientos de agentes de inteligencia artificial atacaron casi cuatrocientas organizaciones en cuarenta y ocho países, en días. Ellos no revisan un sistema a la vez. ¿Por qué nosotros sí?
 
-**07 · El ruido (1:50)**
-El problema no es que no veamos. Vemos demasiado. Dieciocho mil vulnerabilidades, doce herramientas, y ninguna conversa con la otra. Vemos señales. No vemos exposición.
+**07 · Aquí (1:40)**
+Y no es un problema de otros. En Colombia, cada organización recibe más de cuatro mil intentos de ataque por semana: uno cada dos minutos y medio. Antes de terminar, ese reloj marcará uno.
 
-**08 · EXPIA (2:06)**
-Eso es EXPIA. Toma todas las señales y las conecta en una sola historia: desde Internet, por el firewall, al servidor de nómina, a la vulnerabilidad, a la cuenta privilegiada, hasta la base de datos. Automatiza lo repetitivo, agentes especialistas investigan cada dimensión, la IA explica con evidencia y el analista decide.
-*(≈ 2:26 el reloj marca el primer ataque: si ocurre aquí, señálalo.)*
+**08 · Sin mapa (1:54)**
+El problema no es que no tengamos información. Tenemos demasiada. Miles de alertas, en doce herramientas que no conversan entre sí. Tenemos datos. No tenemos el mapa.
 
-**09 · De ruido a decisión (2:32)**
-El resultado: de dieciocho mil señales a tres exposiciones críticas que alguien puede atender hoy. Y no es solo eficiencia: usar IA y automatización en seguridad reduce en casi dos millones de dólares el costo promedio de una brecha.
+**09 · EXPIA (2:08)**
+Eso es EXPIA. Conecta toda esa información y nos muestra el camino que un atacante recorrería hasta lo que más importa: de Internet, por la banca en línea, hasta el core bancario y nuestros clientes. Ve todo en un mapa, prioriza por impacto al negocio, lo explica en lenguaje claro, y la decisión queda en nuestro equipo.
 
-**10 · Cierre (2:50)**
-Tres minutos. El mundo no se detuvo, y nuestra exposición tampoco. EXPIA la mantiene en el radar.
+**10 · De ruido a decisión (2:32)**
+El resultado: de dieciocho mil alertas a tres decisiones que podemos tomar hoy. Y las organizaciones que usan IA y automatización en seguridad reducen en casi dos millones de dólares el costo de una brecha.
+
+**11 · Cierre (2:44)**
+Tres minutos. El mundo no se detuvo, y nuestra exposición tampoco. La confianza de nuestros clientes depende de verla a tiempo. EXPIA la mantiene en el radar.
 
 ---
 
 ## Fuentes (2026)
-- **Verizon DBIR 2026**: la explotación de vulnerabilidades es la primera vía de entrada (31 %, antes 20 %); mediana de 43 días para remediar vulnerabilidades KEV; solo 26 % de las KEV críticas se remediaron por completo. [Help Net Security](https://helpnetsecurity.com/2026/05/20/verizon-2026-dbir-findings) · [TechRepublic](https://www.techrepublic.com/article/news-verizon-dbir-vulnerability-exploitation-2026/)
-- **Mandiant M-Trends 2026**: tiempo medio de explotación de −7 días (antes del parche). Citado en [VulnCheck](https://www.vulncheck.com/blog/state-of-exploitation-1h-2026) y [Cylent](https://cylent.io/guides/time-to-exploit)
-- **IBM Cost of a Data Breach 2026**: costo promedio USD 4,99 M; 1 de cada 4 brechas maliciosas usa IA; −USD 1,93 M con uso extensivo de IA y automatización. [Help Net Security](https://www.helpnetsecurity.com/2026/07/30/ibm-cost-of-a-data-breach-2026/) · [IBM](https://newsroom.ibm.com/2026-07-29-ibm-study-one-in-four-malicious-breaches-are-ai-enabled,-costing-companies-6-million-on-average)
-- **Check Point Research, oct 2026**: 4.151 ataques semanales por organización en Colombia. [El Nuevo Siglo](https://www.elnuevosiglo.com.co/nacion/colombia-ocupa-el-tercer-puesto-en-america-latina-en-intentos-de-ciberataques-en-2026) · [Infobae](https://www.infobae.com/tecno/2026/05/13/america-latina-es-la-region-con-mas-ciberataques-en-el-mundo-se-sufren-mas-de-3-mil-ataques-semanales/)
-- **Agentes de IA y PaperCut (GreyNoise, sep 2026)**: 440 servidores, 395 organizaciones, 48 países. [ThreatDown](https://www.threatdown.com/blog/ai-orchestrated-cyberattacks/) · [Fortune](https://fortune.com/2026/10/21/powerful-new-ai-models-are-powering-a-growing-wave-of-cyber-attacks-experts-say/)
-- **Incidentes del radar** (Canvas/Instructure, plantas de agua de Minnesota, KelpDAO, sector financiero de Corea, guerra en Irán, registro civil de Dinamarca): [Integrity360](https://insights.integrity360.com/the-biggest-cyber-attacks-of-2026-so-far-key-lessons-for-businesses) · [CSIS](https://www.csis.org/programs/strategic-technologies-program/significant-cyber-incidents) · [Wikipedia: Cyberwarfare during the 2026 Iran war](https://en.wikipedia.org/wiki/Cyberwarfare_during_the_2026_Iran_war)
-- **Colombia, ola de mayo**: [Occidente](https://occidente.co/empresario/crisis-por-incidentes-ciberneticos-en-colombia-mayo-2026/)
+- **Incidentes en banca**
+  - JPMorgan, Visa y Mastercard: datos de unos 16.000 clientes publicados a través de proveedores, nov. [Euronews](https://euronews.com/2026/11/20/hackers-leak-stolen-data-on-16000-visa-mastercard-and-jpmorgan-customers) · [Washington Post](https://www.washingtonpost.com/nation/2026/11/19/cyberattack-may-have-exposed-chase-bank-mastercard-customer-data/)
+  - BBVA y Nu Colombia: datos de clientes expuestos por un proveedor de cobranza, mar. [Portafolio](https://www.portafolio.co/economia/ciberataque-a-proveedor-externo-habria-expuesto-datos-de-clientes-de-bbva-y-nu-colombia-490994) · [Infobae](https://www.infobae.com/colombia/2026/03/24/revelaron-presunta-filtracion-de-mas-de-1000-datos-de-clientes-de-reconocido-banco-en-colombia/)
+  - River Bank & Trust, ransomware, jun. [SecurityWeek](https://www.securityweek.com/river-bank-says-hackers-deleted-data-stolen-in-ransomware-attack/)
+  - TruStage y los dos bancos de EE. UU. atacados vía proveedor. [UpGuard](https://www.upguard.com/blog/biggest-data-breaches-financial-services) · [PKWARE](https://www.pkware.com/blog/2026-data-breaches)
+  - Banca de Corea del Sur y KelpDAO. [Integrity360](https://insights.integrity360.com/the-biggest-cyber-attacks-of-2026-so-far-key-lessons-for-businesses)
+- **Costo en el sector financiero, USD 6,29 M (IBM 2026)** y **mediana de rescate de USD 3 M (Sophos 2026)**. [CybelAngel](https://cybelangel.com/blog/financial-services-cybersecurity-the-ultimate-guide/) · [Invenio IT](https://invenioit.com/continuity/ransomware-attacks-finance/)
+- **48 % de las brechas involucra a terceros, frente a 30 %; 43 días para remediar (Verizon DBIR 2026).** [Help Net Security](https://helpnetsecurity.com/2026/05/20/verizon-2026-dbir-findings)
+- **Explotación 7 días antes del parche (Mandiant M-Trends 2026).** [VulnCheck](https://www.vulncheck.com/blog/state-of-exploitation-1h-2026)
+- **1 de cada 4 brechas usa IA; −USD 1,93 M con IA y automatización (IBM 2026).** [Help Net Security](https://www.helpnetsecurity.com/2026/07/30/ibm-cost-of-a-data-breach-2026/)
+- **Agentes de IA: 395 organizaciones en 48 países (GreyNoise, sep 2026).** [ThreatDown](https://www.threatdown.com/blog/ai-orchestrated-cyberattacks/)
+- **Colombia: 4.151 intentos de ataque semanales por organización (Check Point, oct 2026).** [El Nuevo Siglo](https://www.elnuevosiglo.com.co/nacion/colombia-ocupa-el-tercer-puesto-en-america-latina-en-intentos-de-ciberataques-en-2026)
 
-**Antes de presentar, verifica en los informes originales.** Varias cifras llegan por medios y blogs de proveedores. Las fuentes no siempre coinciden (por ejemplo, el ranking de Colombia en la región). La cifra de 275 M de Canvas es lo que afirma el atacante, y así se presenta.
-Los datos de la organización (18.392 vulnerabilidades, ruta SRV-PS-014, embudo) son ilustrativos, igual que en `expia/`.
+**Antes de presentar, verifica en los informes originales.** Varias cifras llegan por medios y blogs de proveedores.
+- JPMorgan, Visa y Mastercard: las empresas dicen que no se expusieron datos de pago y la autenticidad no se ha verificado de forma independiente.
+- Detalles de TruStage y de los dos bancos de EE. UU.: vienen de recopilaciones y no los pude contrastar con reportajes originales.
+- No se incluyeron las caídas de Chase (16 nov) ni de Bancolombia (feb) porque fueron fallas técnicas, no ataques.
+
+Los datos de la organización (18.392 alertas, ruta al core, embudo) son ilustrativos.
