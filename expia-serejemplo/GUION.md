@@ -1,41 +1,54 @@
 # Guion · EXPIA en el radar (≤ 3:00)
 
-**Audiencia:** vicepresidentes. Lenguaje de negocio (clientes, dinero, confianza, proveedores), sin tecnicismos.
-≈ 400 palabras · unos 2:40 a ritmo natural, y deja aire para las pausas.
-Consejo: al empezar, señala el reloj de arriba a la derecha. Hacia el **2:26** marca el primer intento de ataque, justo durante la escena de EXPIA: si lo ves, señálalo.
+**Audiencia:** vicepresidentes. Lenguaje de negocio, sin tecnicismos.
+**Estructura:** el mundo y la banca (≈ 1:40) → **EXPIA, la solución** (≈ 1:20): qué es, a qué se conecta, cómo orquesta agentes y qué nos muestra.
+≈ 355 palabras · unos 2:25 a ritmo natural, con aire para las pausas.
+Consejo: al empezar, señala el reloj de arriba a la derecha. Hacia el **2:26** marca el primer intento de ataque, justo al entrar en "El camino al core": si lo ves, señálalo.
+
+## Qué decir de EXPIA (en simple)
+- **Qué es:** el primer orquestador de agentes de ciberseguridad de la organización.
+- **A qué se conecta:** vulnerabilidades, evaluación de controles CIS, excepciones a líneas base, firewall, GRC, activos, identidades e inteligencia de amenazas. No reemplaza nada: lo conecta.
+- **Cómo funciona:** como un director de orquesta. Reparte cada pregunta entre agentes especialistas (ARGUS, AEGIS, AGORA…) y une sus respuestas.
+- **Qué entrega:** el camino que un atacante recorrería hasta el core, y de miles de alertas a pocas decisiones explicadas en lenguaje de negocio. La decisión sigue siendo humana.
 
 **01 · Tres minutos (0:00)**
-Tenemos tres minutos. Les pido que miren el reloj de arriba a la derecha: va a contar algo mientras hablamos.
+Tenemos tres minutos. Miren el reloj de arriba: va a contar algo mientras hablamos.
 
-**02 · La banca, en la mira (0:12)**
-Este es el radar de 2026 para la banca. JPMorgan, Visa y Mastercard: datos de clientes publicados en noviembre. Aquí en Colombia, BBVA y Nu, en marzo. Dieciséis entidades financieras en Corea atacadas con inteligencia artificial. Cooperativas en Estados Unidos con servicios caídos durante meses. Bancos distintos, países distintos, un mismo patrón: la puerta estaba abierta.
+**02 · La banca, en la mira (0:10)**
+Este es el radar de 2026 para la banca: JPMorgan, Visa y Mastercard en noviembre; BBVA y Nu aquí en Colombia; dieciséis entidades en Corea atacadas con inteligencia artificial. Un mismo patrón: la puerta estaba abierta.
 
-**03 · Lo que cuesta (0:36)**
-Y abrir esa puerta cuesta: más de seis millones de dólares por brecha en el sector financiero. Y para liberar los sistemas secuestrados de un banco, los atacantes piden en promedio tres millones: más que a cualquier otra industria.
+**03 · Lo que cuesta (0:30)**
+Y abrir esa puerta cuesta: más de seis millones de dólares por brecha en una entidad financiera, y tres millones de rescate exigidos a la banca, más que a cualquier industria.
 
-**04 · La puerta no siempre es nuestra (0:52)**
-Y la puerta no siempre es nuestra: casi la mitad de las brechas entra por un proveedor o un aliado. Así les pasó a BBVA y Nu en Colombia, y a JPMorgan este mes.
+**04 · La puerta no siempre es nuestra (0:42)**
+La puerta no siempre es nuestra: casi la mitad de las brechas entra por un proveedor. Así les pasó a BBVA, a Nu y a JPMorgan.
 
-**05 · La carrera (1:08)**
-Y es una carrera. Los atacantes usan una falla, en promedio, una semana antes de que exista la solución. Nosotros tardamos cuarenta y tres días en cerrarla. Ellos se mueven en días; nosotros, en semanas.
+**05 · La carrera (0:54)**
+Es una carrera. Los atacantes usan una falla una semana antes de que exista la solución. Nosotros tardamos cuarenta y tres días en cerrarla.
 
-**06 · El atacante ya automatizó (1:24)**
-Y ya automatizaron: cientos de agentes de inteligencia artificial atacaron casi cuatrocientas organizaciones en cuarenta y ocho países, en días. Ellos no revisan un sistema a la vez. ¿Por qué nosotros sí?
+**06 · El atacante ya automatizó (1:07)**
+Y ya automatizaron: cientos de agentes de inteligencia artificial atacaron casi cuatrocientas organizaciones en días. Ellos usan agentes. ¿Y nosotros?
 
-**07 · Aquí (1:40)**
-Y no es un problema de otros. En Colombia, cada organización recibe más de cuatro mil intentos de ataque por semana: uno cada dos minutos y medio. Antes de terminar, ese reloj marcará uno.
+**07 · Aquí (1:20)**
+Y aquí: cada organización en Colombia recibe más de cuatro mil intentos de ataque por semana. Uno cada dos minutos y medio. Ese reloj marcará uno antes de terminar.
 
-**08 · Sin mapa (1:54)**
-El problema no es que no tengamos información. Tenemos demasiada. Miles de alertas, en doce herramientas que no conversan entre sí. Tenemos datos. No tenemos el mapa.
+**08 · Sin mapa (1:32)**
+Información tenemos de sobra: miles de alertas en doce herramientas que no conversan entre sí. Tenemos datos. No tenemos el mapa.
 
-**09 · EXPIA (2:08)**
-Eso es EXPIA. Conecta toda esa información y nos muestra el camino que un atacante recorrería hasta lo que más importa: de Internet, por la banca en línea, hasta el core bancario y nuestros clientes. Ve todo en un mapa, prioriza por impacto al negocio, lo explica en lenguaje claro, y la decisión queda en nuestro equipo.
+**09 · Qué es EXPIA (1:43)**
+Por eso construimos EXPIA: el primer orquestador de agentes de ciberseguridad de la organización. No reemplaza lo que tenemos: se conecta a ello. Vulnerabilidades, controles CIS, excepciones a nuestras líneas base, el firewall, GRC, nuestros activos y quién tiene acceso. Todo en un solo lugar.
 
-**10 · De ruido a decisión (2:32)**
-El resultado: de dieciocho mil alertas a tres decisiones que podemos tomar hoy. Y las organizaciones que usan IA y automatización en seguridad reducen en casi dos millones de dólares el costo de una brecha.
+**10 · Un equipo de agentes (2:05)**
+Y funciona como un director de orquesta. Cada pregunta la reparte entre agentes especialistas: ARGUS revisa vulnerabilidades, AEGIS verifica controles y excepciones, AGORA evalúa qué tan bien estamos configurados. EXPIA une sus respuestas en una sola visión.
 
-**11 · Cierre (2:44)**
-Tres minutos. El mundo no se detuvo, y nuestra exposición tampoco. La confianza de nuestros clientes depende de verla a tiempo. EXPIA la mantiene en el radar.
+**11 · El camino al core (2:25)**
+Con todo eso conectado, EXPIA nos muestra lo que ningún reporte muestra: el camino que un atacante recorrería desde Internet, por la banca en línea, hasta el core bancario y nuestros clientes.
+
+**12 · De ruido a decisión (2:41)**
+El resultado: de dieciocho mil alertas a tres decisiones para hoy, explicadas en lenguaje de negocio. Y la decisión sigue siendo nuestra.
+
+**13 · Cierre (2:51)**
+Tres minutos. El mundo no se detuvo, y nuestra exposición tampoco. EXPIA la mantiene en el radar.
 
 ---
 

@@ -51,10 +51,24 @@
         <div class="counts">${d.counts.map((c) => `<div><b data-count="${c.n}">0</b><span>${c.l}</span></div>`).join('')}</div>
       </div>
       <div class="corner br"><h2 class="h2">${d.big}</h2><p class="sub">${d.line}</p></div>`,
+    hubSources: (d) => `
+      <div class="corner tl side-text">
+        <p class="k">${d.k}</p>
+        <p class="brand brand--l">${d.title}<span>${d.sub}</span></p>
+        <h2 class="h2">${d.big}</h2>
+      </div>
+      <p class="bottom-line bottom-line--cyan">${d.line}</p>`,
+    hubAgents: (d) => `
+      <div class="corner tl side-text">
+        <p class="k">${d.k}</p>
+        <h2 class="h2">${d.big}</h2>
+        <p class="sub">${d.sub}</p>
+      </div>
+      <p class="tag-note">${d.note}</p>`,
     expia: (d) => `
       <div class="top-center">
-        <p class="brand">${d.title}<span>${d.sub}</span></p>
-        <h2 class="h2">${d.big}</h2>
+        <p class="k">Lo que nos muestra</p>
+        <h2 class="h2 h2--route">${d.big}</h2>
       </div>
       <div class="pillars">${d.pillars.map((p) => `<div><i>${p.k}</i><b>${p.l}</b><span>${p.s}</span></div>`).join('')}</div>
       <p class="tag-note">${d.note}</p>`,
@@ -88,20 +102,25 @@
   RD.setEvents(byId.world.events);
   RD.makeNoise(420);
   RD.setChain(byId.expia.chain);
+  RD.setHub('sources', byId.what.sources);
+  RD.setHub('agents', byId.agents.agents);
+  const hubs = (src, ag) => { RD.showHub('sources', src); RD.showHub('agents', ag); };
   const side = (o) => (narrow() ? { ...o, cx: 0.5, dim: Math.min(o.dim, 0.18) } : o);
 
   const radarFor = {
-    hook()   { RD.view({ cx: 0.5, cy: 0.5, r: 0.4, dim: 0.35 }); RD.showEvents(false); RD.showNoise(0); RD.showChain(false); },
-    world()  { RD.view({ cx: narrow() ? 0.5 : 0.6, cy: 0.55, r: 0.36, dim: 1 }); RD.showEvents(true); RD.showNoise(0); RD.showChain(false); },
-    money()  { RD.view(side({ cx: 0.78, cy: 0.5, r: 0.42, dim: 0.4 })); RD.showEvents(false, 'faint'); RD.showNoise(0); RD.showChain(false); },
-    third()  { RD.view(side({ cx: 0.76, cy: 0.5, r: 0.42, dim: 0.55 })); RD.showEvents(false, 'faint', (e) => e.third); RD.showNoise(0); RD.showChain(false); },
-    race()   { RD.view(side({ cx: 0.86, cy: 0.5, r: 0.46, dim: 0.22 })); RD.showEvents(false, 'faint'); RD.showNoise(0); RD.showChain(false); },
-    ai()     { RD.view({ cx: 0.5, cy: 0.5, r: 0.48, dim: 0.22 }); RD.showEvents(false); RD.showNoise(0.35); RD.showChain(false); },
-    here()   { RD.view(side({ cx: 0.74, cy: 0.52, r: 0.4, dim: 0.5 })); RD.showEvents(false); RD.showNoise(0.12); RD.showChain(false); },
-    noise()  { RD.view({ cx: 0.5, cy: 0.52, r: 0.42, dim: 0.85 }); RD.showEvents(false); RD.showNoise(1); RD.showChain(false); },
-    expia()  { RD.view({ cx: 0.5, cy: 0.5, r: narrow() ? 0.42 : 0.44, dim: 0.5 }); RD.showEvents(false); RD.collapseNoise(); RD.showChain(true); },
-    result() { RD.view(side({ cx: 0.86, cy: 0.5, r: 0.44, dim: 0.2 })); RD.showEvents(false); RD.showNoise(0); RD.showChain(false); },
-    close()  { RD.view({ cx: 0.5, cy: 0.5, r: 0.44, dim: 0.6 }); RD.showEvents(false, 'faint'); RD.showNoise(0); RD.showChain(false); },
+    hook()   { RD.view({ cx: 0.5, cy: 0.5, r: 0.4, dim: 0.35 }); RD.showEvents(false); RD.showNoise(0); RD.showChain(false); hubs(0, 0); },
+    world()  { RD.view({ cx: narrow() ? 0.5 : 0.6, cy: 0.55, r: 0.36, dim: 1 }); RD.showEvents(true); RD.showNoise(0); RD.showChain(false); hubs(0, 0); },
+    money()  { RD.view(side({ cx: 0.78, cy: 0.5, r: 0.42, dim: 0.4 })); RD.showEvents(false, 'faint'); RD.showNoise(0); RD.showChain(false); hubs(0, 0); },
+    third()  { RD.view(side({ cx: 0.76, cy: 0.5, r: 0.42, dim: 0.55 })); RD.showEvents(false, 'faint', (e) => e.third); RD.showNoise(0); RD.showChain(false); hubs(0, 0); },
+    race()   { RD.view(side({ cx: 0.86, cy: 0.5, r: 0.46, dim: 0.22 })); RD.showEvents(false, 'faint'); RD.showNoise(0); RD.showChain(false); hubs(0, 0); },
+    ai()     { RD.view({ cx: 0.5, cy: 0.5, r: 0.48, dim: 0.22 }); RD.showEvents(false); RD.showNoise(0.35); RD.showChain(false); hubs(0, 0); },
+    here()   { RD.view(side({ cx: 0.74, cy: 0.52, r: 0.4, dim: 0.5 })); RD.showEvents(false); RD.showNoise(0.12); RD.showChain(false); hubs(0, 0); },
+    noise()  { RD.view({ cx: 0.5, cy: 0.52, r: 0.42, dim: 0.85 }); RD.showEvents(false); RD.showNoise(1); RD.showChain(false); hubs(0, 0); },
+    what()   { RD.view({ cx: narrow() ? 0.5 : 0.63, cy: 0.53, r: 0.34, dim: 0.45 }); RD.showEvents(false); RD.collapseNoise('hub'); RD.showChain(false); hubs(1, 0); },
+    agents() { RD.view({ cx: narrow() ? 0.5 : 0.63, cy: 0.53, r: 0.34, dim: 0.45 }); RD.showEvents(false); RD.showNoise(0); RD.showChain(false); hubs(0.16, 1); },
+    expia()  { RD.view({ cx: 0.5, cy: 0.5, r: narrow() ? 0.42 : 0.44, dim: 0.5 }); RD.showEvents(false); RD.showNoise(0); RD.showChain(true); hubs(0, 0); },
+    result() { RD.view(side({ cx: 0.86, cy: 0.5, r: 0.44, dim: 0.2 })); RD.showEvents(false); RD.showNoise(0); RD.showChain(false); hubs(0, 0); },
+    close()  { RD.view({ cx: 0.5, cy: 0.5, r: 0.44, dim: 0.6 }); RD.showEvents(false, 'faint'); RD.showNoise(0); RD.showChain(false); hubs(0, 0); },
   };
 
   /* ---------- Contadores ---------- */

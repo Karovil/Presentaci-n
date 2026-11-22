@@ -17,12 +17,12 @@ SX.weekly = 4151;
 
 SX.scenes = [
   {
-    id: 'hook', type: 'hook', name: 'Tres minutos', t: 12,
-    notes: 'Tenemos tres minutos. Les pido que miren el reloj de arriba a la derecha: va a contar algo mientras hablamos.',
+    id: 'hook', type: 'hook', name: 'Tres minutos', t: 10,
+    notes: 'Tenemos tres minutos. Miren el reloj de arriba: va a contar algo mientras hablamos.',
   },
   {
-    id: 'world', type: 'world', name: 'La banca, en la mira', t: 24,
-    notes: 'Este es el radar de 2026 para la banca. JPMorgan, Visa y Mastercard: datos de clientes publicados en noviembre. Aquí en Colombia, BBVA y Nu, en marzo. Dieciséis entidades financieras en Corea atacadas con inteligencia artificial. Cooperativas en Estados Unidos con servicios caídos durante meses. Bancos distintos, países distintos, un mismo patrón: la puerta estaba abierta.',
+    id: 'world', type: 'world', name: 'La banca, en la mira', t: 20,
+    notes: 'Este es el radar de 2026 para la banca: JPMorgan, Visa y Mastercard en noviembre; BBVA y Nu aquí en Colombia; dieciséis entidades en Corea atacadas con inteligencia artificial. Un mismo patrón: la puerta estaba abierta.',
     events: [
       { a: -58, d: 0.64, c: 'red',    label: 'JPMorgan · Visa · Mastercard', sub: 'Datos de 16.000 clientes publicados · nov', third: true },
       { a: -14, d: 0.86, c: 'orange', label: 'BBVA y Nu · Colombia',         sub: 'Datos de clientes expuestos · mar', third: true },
@@ -37,8 +37,8 @@ SX.scenes = [
     line: 'Bancos distintos. Países distintos. Un mismo patrón: <b>la puerta estaba abierta</b>.',
   },
   {
-    id: 'money', type: 'stat', name: 'Lo que cuesta', t: 16,
-    notes: 'Y abrir esa puerta cuesta: más de seis millones de dólares por brecha en el sector financiero. Y para liberar los sistemas secuestrados de un banco, los atacantes piden en promedio tres millones: más que a cualquier otra industria.',
+    id: 'money', type: 'stat', name: 'Lo que cuesta', t: 12,
+    notes: 'Y abrir esa puerta cuesta: más de seis millones de dólares por brecha en una entidad financiera, y tres millones de rescate exigidos a la banca, más que a cualquier industria.',
     k: 'Sector financiero · 2026',
     prefix: 'USD', value: 6.29, dec: 2, unit: 'M',
     big: 'cuesta en promedio una brecha en una entidad financiera.',
@@ -47,8 +47,8 @@ SX.scenes = [
     tone: 'orange',
   },
   {
-    id: 'third', type: 'stat', name: 'La puerta no siempre es nuestra', t: 16,
-    notes: 'Y la puerta no siempre es nuestra: casi la mitad de las brechas entra por un proveedor o un aliado. Así les pasó a BBVA y Nu en Colombia, y a JPMorgan este mes.',
+    id: 'third', type: 'stat', name: 'La puerta no siempre es nuestra', t: 12,
+    notes: 'La puerta no siempre es nuestra: casi la mitad de las brechas entra por un proveedor. Así les pasó a BBVA, a Nu y a JPMorgan.',
     k: 'La puerta no siempre es nuestra',
     value: 48, from: 30, unit: '%',
     big: 'de las brechas entra por un proveedor o un aliado.',
@@ -57,16 +57,16 @@ SX.scenes = [
     tone: 'violet',
   },
   {
-    id: 'race', type: 'race', name: 'La carrera', t: 16,
-    notes: 'Y es una carrera. Los atacantes usan una falla, en promedio, una semana antes de que exista la solución. Nosotros tardamos cuarenta y tres días en cerrarla. Ellos se mueven en días; nosotros, en semanas.',
+    id: 'race', type: 'race', name: 'La carrera', t: 13,
+    notes: 'Es una carrera. Los atacantes usan una falla una semana antes de que exista la solución. Nosotros tardamos cuarenta y tres días en cerrarla.',
     att: { n: '7', u: 'días antes', l: 'de que exista la solución, los atacantes ya están usando la falla', src: 'Mandiant M-Trends 2026' },
     def: { n: '43', u: 'días', l: 'tardamos en cerrar las fallas que ya se están usando para atacar', src: 'Verizon DBIR 2026' },
     patch: 'Llega la solución',
     line: 'Ellos se mueven en días. <b>Nosotros, en semanas.</b>',
   },
   {
-    id: 'ai', type: 'ai', name: 'El atacante ya automatizó', t: 16,
-    notes: 'Y ya automatizaron: cientos de agentes de inteligencia artificial atacaron casi cuatrocientas organizaciones en cuarenta y ocho países, en días. Ellos no revisan un sistema a la vez. ¿Por qué nosotros sí?',
+    id: 'ai', type: 'ai', name: 'El atacante ya automatizó', t: 13,
+    notes: 'Y ya automatizaron: cientos de agentes de inteligencia artificial atacaron casi cuatrocientas organizaciones en días. Ellos usan agentes. ¿Y nosotros?',
     stats: [
       { n: 395, l: 'organizaciones' },
       { n: 48,  l: 'países' },
@@ -77,11 +77,11 @@ SX.scenes = [
     side: '<b>1 de cada 4</b> brechas ya usa inteligencia artificial',
     sideSrc: 'IBM 2026',
     src: 'GreyNoise, sep 2026',
-    line: 'Ellos no revisan un sistema a la vez. <b>¿Por qué nosotros sí?</b>',
+    line: 'Ellos ya trabajan con agentes de IA. <b>¿Y nosotros?</b>',
   },
   {
-    id: 'here', type: 'stat', name: 'Aquí', t: 14,
-    notes: 'Y no es un problema de otros. En Colombia, cada organización recibe más de cuatro mil intentos de ataque por semana: uno cada dos minutos y medio. Antes de terminar, ese reloj marcará uno.',
+    id: 'here', type: 'stat', name: 'Aquí', t: 12,
+    notes: 'Y aquí: cada organización en Colombia recibe más de cuatro mil intentos de ataque por semana. Uno cada dos minutos y medio. Ese reloj marcará uno antes de terminar.',
     k: 'Colombia · octubre de 2026',
     value: 4151,
     big: 'intentos de ataque por semana contra cada organización.',
@@ -90,8 +90,8 @@ SX.scenes = [
     tone: 'red',
   },
   {
-    id: 'noise', type: 'noise', name: 'Sin mapa', t: 14,
-    notes: 'El problema no es que no tengamos información. Tenemos demasiada. Miles de alertas, en doce herramientas que no conversan entre sí. Tenemos datos. No tenemos el mapa.',
+    id: 'noise', type: 'noise', name: 'Sin mapa', t: 11,
+    notes: 'Información tenemos de sobra: miles de alertas en doce herramientas que no conversan entre sí. Tenemos datos. No tenemos el mapa.',
     counts: [
       { n: 18392, l: 'alertas abiertas' },
       { n: 12,    l: 'herramientas' },
@@ -101,11 +101,46 @@ SX.scenes = [
     line: 'El reto no es ver más. Es saber qué importa para el negocio.',
   },
   {
-    id: 'expia', type: 'expia', name: 'EXPIA', t: 24,
-    notes: 'Eso es EXPIA. Conecta toda esa información y nos muestra el camino que un atacante recorrería hasta lo que más importa: de Internet, por la banca en línea, hasta el core bancario y nuestros clientes. Ve todo en un mapa, prioriza por impacto al negocio, lo explica en lenguaje claro, y la decisión queda en nuestro equipo.',
+    id: 'what', type: 'hubSources', name: 'Qué es EXPIA', t: 22,
+    notes: 'Por eso construimos EXPIA: el primer orquestador de agentes de ciberseguridad de la organización. No reemplaza lo que tenemos: se conecta a ello. Vulnerabilidades, controles CIS, excepciones a nuestras líneas base, el firewall, GRC, nuestros activos y quién tiene acceso. Todo en un solo lugar.',
+    k: 'La solución',
+    title: 'EXPIA',
+    sub: 'Exposure &amp; Intelligence Platform',
+    big: 'El primer <em>orquestador de agentes</em> de ciberseguridad de la organización.',
+    line: 'No reemplaza lo que tenemos. <b>Lo conecta.</b>',
+    sources: [
+      { l: 'Vulnerabilidades',   s: 'Qué está débil',              c: 'orange' },
+      { l: 'Controles CIS',      s: 'Qué tan protegidos estamos',  c: 'green' },
+      { l: 'Excepciones',        s: 'Qué riesgos aceptamos',       c: 'yellow' },
+      { l: 'Firewall',           s: 'Qué puertas están abiertas',  c: 'red' },
+      { l: 'GRC',                s: 'Cómo gestionamos el riesgo',  c: 'violet' },
+      { l: 'Activos',            s: 'Qué tenemos y qué es crítico', c: 'ink' },
+      { l: 'Identidades',        s: 'Quién tiene acceso',          c: 'violet' },
+      { l: 'Amenazas',           s: 'Qué se ataca en el mundo',    c: 'red' },
+    ],
+  },
+  {
+    id: 'agents', type: 'hubAgents', name: 'Un equipo de agentes', t: 20,
+    notes: 'Y funciona como un director de orquesta. Cada pregunta la reparte entre agentes especialistas: ARGUS revisa vulnerabilidades, AEGIS verifica controles y excepciones, AGORA evalúa qué tan bien estamos configurados. EXPIA une sus respuestas en una sola visión.',
+    k: 'Cómo funciona',
+    big: 'Un director de orquesta y un <em>equipo de especialistas</em>.',
+    sub: 'EXPIA reparte cada pregunta entre agentes de IA, cada uno experto en su tema, y une sus respuestas en una sola visión.',
+    agents: [
+      { l: 'ARGUS',     s: 'Vulnerabilidades',            c: 'orange' },
+      { l: 'AEGIS',     s: 'Controles y excepciones',     c: 'green' },
+      { l: 'AGORA',     s: 'Postura de seguridad',        c: 'cyan' },
+      { l: 'Identidad', s: 'Accesos y privilegios',       c: 'violet' },
+      { l: 'Amenazas',  s: 'Lo que pasa en el mundo',     c: 'red' },
+      { l: 'Activos',   s: 'Lo crítico para el negocio',  c: 'ink' },
+    ],
+    note: 'Agentes de IA · la decisión siempre es humana',
+  },
+  {
+    id: 'expia', type: 'expia', name: 'El camino al core', t: 16,
+    notes: 'Con todo eso conectado, EXPIA nos muestra lo que ningún reporte muestra: el camino que un atacante recorrería desde Internet, por la banca en línea, hasta el core bancario y nuestros clientes.',
     title: 'EXPIA',
     sub: 'Exposure & Intelligence Platform',
-    big: 'Muestra el camino que un atacante recorrería <em>hasta el core</em>.',
+    big: 'Nos muestra el camino que un atacante recorrería <em>hasta el core</em>.',
     chain: [
       { l: 'Internet',            s: 'Cualquier persona',        c: 'red' },
       { l: 'Banca en línea',      s: 'Canal abierto al público', c: 'yellow' },
@@ -123,8 +158,8 @@ SX.scenes = [
     note: 'Caso ilustrativo',
   },
   {
-    id: 'result', type: 'result', name: 'De ruido a decisión', t: 12,
-    notes: 'El resultado: de dieciocho mil alertas a tres decisiones que podemos tomar hoy. Y las organizaciones que usan IA y automatización en seguridad reducen en casi dos millones de dólares el costo de una brecha.',
+    id: 'result', type: 'result', name: 'De ruido a decisión', t: 10,
+    notes: 'El resultado: de dieciocho mil alertas a tres decisiones para hoy, explicadas en lenguaje de negocio. Y la decisión sigue siendo nuestra.',
     funnel: [
       { n: 18392, l: 'alertas' },
       { n: 1136,  l: 'riesgos posibles' },
@@ -139,8 +174,8 @@ SX.scenes = [
     line: 'Menos ruido. <b>Más decisión.</b>',
   },
   {
-    id: 'close', type: 'close', name: 'Cierre', t: 12,
-    notes: 'Tres minutos. El mundo no se detuvo, y nuestra exposición tampoco. La confianza de nuestros clientes depende de verla a tiempo. EXPIA la mantiene en el radar.',
+    id: 'close', type: 'close', name: 'Cierre', t: 9,
+    notes: 'Tres minutos. El mundo no se detuvo, y nuestra exposición tampoco. EXPIA la mantiene en el radar.',
     a: 'En tres minutos el mundo no se detuvo.',
     b: 'Nuestra exposición tampoco.',
     c: 'EXPIA la mantiene <em>en el radar</em>.',

@@ -59,13 +59,35 @@ SX.radar = (() => {
     noise.forEach((p) => { p.ta = level; p.tx = p.hx; p.ty = p.hy; });
   }
   /* El ruido converge en la ruta y desaparece */
-  function collapseNoise() {
-    const ns = chain.nodes;
+  /* El ruido converge en un conjunto de puntos (fuentes de EXPIA o ruta) y desaparece */
+  function collapseNoise(targets) {
+    const ns = targets === 'hub' ? hubs.sources.items : chain.nodes;
     noise.forEach((p, i) => {
       const n = ns[i % ns.length];
       p.tx = n.x + (Math.random() - 0.5) * 0.05; p.ty = n.y + (Math.random() - 0.5) * 0.05;
       p.ta = 0;
     });
+  }
+
+  /* ---------- Hubs: EXPIA en el centro, fuentes y agentes alrededor ---------- */
+  const hubs = {
+    sources: { items: [], show: 0, tshow: 0, t0: 0, r: 0.82, kind: 'source' },
+    agents:  { items: [], show: 0, tshow: 0, t0: 0, r: 0.46, kind: 'agent' },
+  };
+  let core = 0, tcore = 0;
+  function setHub(key, list) {
+    const h = hubs[key], n = list.length, off = key === 'agents' ? -90 : -90 + 180 / n;
+    h.items = list.map((it, i) => {
+      const a = (off + i * 360 / n) * Math.PI / 180;
+      return { ...it, a, x: Math.cos(a) * h.r, y: Math.sin(a) * h.r };
+    });
+  }
+  /* level: 0 oculto · 0.3 tenue · 1 visible */
+  function showHub(key, level) {
+    const h = hubs[key];
+    if (level > h.tshow + 0.01 && h.tshow < 0.5) h.t0 = performance.now();
+    h.tshow = level;
+    tcore = Math.max(hubs.sources.tshow, hubs.agents.tshow) > 0 ? 1 : 0;
   }
 
   function setChain(list) {
@@ -211,6 +233,79 @@ SX.radar = (() => {
       }
     }
 
+    /* Hubs: fuentes conectadas y agentes orquestados */
+    core = lerp(core, tcore, Math.min(1, dt * 2.5));
+    for (const key of ['sources', 'agents']) {
+      const h = hubs[key];
+      h.show = lerp(h.show, h.tshow, Math.min(1, dt * 2.5));
+      if (h.show < 0.01) continue;
+      const el = (now - h.t0) / 1000, n = h.items.length;
+      h.items.forEach((it, i) => {
+        const on = Math.max(0, Math.min(1, (el - 0.6 - i * (key === 'agents' ? 0.45 : 0.3)) * 1.6)) * h.show;
+        if (on <= 0) return;
+        const c = COL[it.c || 'cyan'];
+        const [x, y] = P(it.x, it.y);
+        const [x0, y0] = P(it.x * 0.2, it.y * 0.2);
+        /* enlace con el núcleo */
+        ctx.strokeStyle = rgba(c, 0.28 * on); ctx.lineWidth = 1;
+        ctx.setLineDash(key === 'sources' ? [3, 5] : []);
+        ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x0, y0); ctx.stroke();
+        ctx.setLineDash([]);
+        /* flujo: datos que entran (fuentes) · tareas y respuestas (agentes) */
+        const flows = key === 'sources' ? [[(now / 1500 + i * 0.17) % 1, 1]] : [[(now / 1300 + i * 0.21) % 1, -1], [(now / 1300 + i * 0.21 + 0.5) % 1, 1]];
+        flows.forEach(([f, dir]) => {
+          const t = dir > 0 ? f : 1 - f;
+          const px = x + (x0 - x) * t, py = y + (y0 - y) * t;
+          ctx.fillStyle = rgba(dir > 0 ? c : COL.cyan, on * (1 - Math.abs(t - 0.5)) * 1.4);
+          ctx.beginPath(); ctx.arc(px, py, 2.2, 0, TAU); ctx.fill();
+        });
+        /* nodo */
+        const big = key === 'agents', rr = big ? 15 : 6;
+        ctx.fillStyle = '#05070b';
+        ctx.beginPath(); ctx.arc(x, y, rr, 0, TAU); ctx.fill();
+        ctx.strokeStyle = rgba(c, on); ctx.lineWidth = big ? 1.8 : 1.2;
+        ctx.beginPath(); ctx.arc(x, y, rr, 0, TAU); ctx.stroke();
+        ctx.fillStyle = rgba(c, on);
+        ctx.beginPath(); ctx.arc(x, y, big ? 4.5 : 2.4, 0, TAU); ctx.fill();
+        if (big) {
+          const ph = ((now / 1300 + i * 0.21) % 1);
+          ctx.strokeStyle = rgba(c, (1 - ph) * 0.5 * on);
+          ctx.beginPath(); ctx.arc(x, y, rr + ph * 16, 0, TAU); ctx.stroke();
+        }
+        /* etiqueta, hacia afuera (solo si el hub está en primer plano) */
+        if (h.tshow < 0.5) return;
+        const cs = Math.cos(it.a), sn = Math.sin(it.a);
+        const lx = x + cs * (rr + 12), ly = y + sn * (rr + 14);
+        ctx.textAlign = cs > 0.25 ? 'left' : cs < -0.25 ? 'right' : 'center';
+        const base = sn > 0.25 ? ly + 10 : sn < -0.25 ? ly - 14 : ly - 2;
+        ctx.font = `500 ${big ? 15 : 13}px "Space Grotesk", sans-serif`;
+        ctx.fillStyle = rgba(COL.ink, on);
+        ctx.fillText(it.l, lx, base);
+        ctx.font = '400 10.5px "IBM Plex Mono", monospace';
+        ctx.fillStyle = rgba([164, 175, 196], on);
+        ctx.fillText(it.s, lx, base + 15);
+      });
+    }
+    /* Núcleo EXPIA */
+    if (core > 0.01) {
+      const rc = R * 0.16, pulse = 1 + Math.sin(now / 500) * 0.04;
+      const cg2 = ctx.createRadialGradient(cx, cy, 0, cx, cy, rc * 2.2);
+      cg2.addColorStop(0, `rgba(94,226,255,${0.22 * core})`); cg2.addColorStop(1, 'rgba(94,226,255,0)');
+      ctx.fillStyle = cg2; ctx.beginPath(); ctx.arc(cx, cy, rc * 2.2, 0, TAU); ctx.fill();
+      ctx.fillStyle = `rgba(5,7,11,${0.92 * core})`;
+      ctx.beginPath(); ctx.arc(cx, cy, rc * pulse, 0, TAU); ctx.fill();
+      ctx.strokeStyle = `rgba(94,226,255,${0.85 * core})`; ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.arc(cx, cy, rc * pulse, 0, TAU); ctx.stroke();
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.font = `500 ${Math.max(14, rc * 0.36)}px "Space Grotesk", sans-serif`;
+      ctx.fillStyle = `rgba(230,235,245,${core})`;
+      ctx.fillText('EXPIA', cx, cy - rc * 0.08);
+      ctx.font = `400 ${Math.max(8, rc * 0.12)}px "IBM Plex Mono", monospace`;
+      ctx.fillStyle = `rgba(94,226,255,${core})`;
+      ctx.fillText('ORQUESTADOR', cx, cy + rc * 0.3);
+      ctx.textBaseline = 'alphabetic';
+    }
+
     /* Ruta de exposición */
     chain.show = lerp(chain.show, chain.tshow, Math.min(1, dt * 3));
     if (chain.show > 0.01 && chain.nodes.length) {
@@ -272,5 +367,5 @@ SX.radar = (() => {
   addEventListener('resize', resize);
   requestAnimationFrame(frame);
 
-  return { view, setEvents, showEvents, makeNoise, showNoise, collapseNoise, setChain, showChain, ping, set speed(s) { speed = s; } };
+  return { view, setEvents, showEvents, makeNoise, showNoise, collapseNoise, setHub, showHub, setChain, showChain, ping, set speed(s) { speed = s; } };
 })();
